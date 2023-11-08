@@ -22,6 +22,9 @@
 		CE5504992AFBAB700036BE9C /* JsonPlaceholderError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5504982AFBAB700036BE9C /* JsonPlaceholderError.swift */; };
 		CE55049C2AFBABA20036BE9C /* PostsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE55049B2AFBABA20036BE9C /* PostsRequest.swift */; };
 		CE55049E2AFBAC1A0036BE9C /* ApiConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE55049D2AFBAC1A0036BE9C /* ApiConfig.swift */; };
+		CE5504A22AFBB7820036BE9C /* PostsRemoteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5504A12AFBB7820036BE9C /* PostsRemoteRepository.swift */; };
+		CE5504A62AFBB8140036BE9C /* PostsRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5504A52AFBB8140036BE9C /* PostsRepositoryProtocol.swift */; };
+		CE5504A82AFBB84F0036BE9C /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5504A72AFBB84F0036BE9C /* Post.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +56,9 @@
 		CE5504982AFBAB700036BE9C /* JsonPlaceholderError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonPlaceholderError.swift; sourceTree = "<group>"; };
 		CE55049B2AFBABA20036BE9C /* PostsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsRequest.swift; sourceTree = "<group>"; };
 		CE55049D2AFBAC1A0036BE9C /* ApiConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConfig.swift; sourceTree = "<group>"; };
+		CE5504A12AFBB7820036BE9C /* PostsRemoteRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsRemoteRepository.swift; sourceTree = "<group>"; };
+		CE5504A52AFBB8140036BE9C /* PostsRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsRepositoryProtocol.swift; sourceTree = "<group>"; };
+		CE5504A72AFBB84F0036BE9C /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +102,8 @@
 			children = (
 				CE5504842AFB99990036BE9C /* Core */,
 				CE5504872AFBA59F0036BE9C /* Api */,
+				CE5504A02AFBB7530036BE9C /* Repository */,
+				CE5504A32AFBB7E00036BE9C /* Model */,
 				CE5504862AFB99DF0036BE9C /* Resource */,
 				CE5504582AFB87290036BE9C /* ViewController.swift */,
 				CE55045F2AFB872A0036BE9C /* LaunchScreen.storyboard */,
@@ -191,6 +199,31 @@
 				CE55049B2AFBABA20036BE9C /* PostsRequest.swift */,
 			);
 			path = Request;
+			sourceTree = "<group>";
+		};
+		CE5504A02AFBB7530036BE9C /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				CE5504A42AFBB7FA0036BE9C /* PostsRepository */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		CE5504A32AFBB7E00036BE9C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CE5504A72AFBB84F0036BE9C /* Post.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CE5504A42AFBB7FA0036BE9C /* PostsRepository */ = {
+			isa = PBXGroup;
+			children = (
+				CE5504A52AFBB8140036BE9C /* PostsRepositoryProtocol.swift */,
+				CE5504A12AFBB7820036BE9C /* PostsRemoteRepository.swift */,
+			);
+			name = PostsRepository;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -298,9 +331,12 @@
 				CE55048C2AFBA65E0036BE9C /* UrlSessionManager.swift in Sources */,
 				CE5504942AFBAADA0036BE9C /* PostResponse.swift in Sources */,
 				CE5504592AFB87290036BE9C /* ViewController.swift in Sources */,
+				CE5504A22AFBB7820036BE9C /* PostsRemoteRepository.swift in Sources */,
 				CE5504552AFB87290036BE9C /* AppDelegate.swift in Sources */,
 				CE5504572AFB87290036BE9C /* SceneDelegate.swift in Sources */,
 				CE5504972AFBAB260036BE9C /* JsonPlaceholderClient.swift in Sources */,
+				CE5504A82AFBB84F0036BE9C /* Post.swift in Sources */,
+				CE5504A62AFBB8140036BE9C /* PostsRepositoryProtocol.swift in Sources */,
 				CE55049E2AFBAC1A0036BE9C /* ApiConfig.swift in Sources */,
 				CE55049C2AFBABA20036BE9C /* PostsRequest.swift in Sources */,
 				CE5504912AFBAA220036BE9C /* ApiRequest.swift in Sources */,
