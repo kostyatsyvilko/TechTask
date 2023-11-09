@@ -1,6 +1,6 @@
 import Foundation
 
-struct Post {
+struct Post: Hashable {
     var title: String
     var body: String
     
