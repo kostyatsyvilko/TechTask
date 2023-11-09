@@ -1,6 +1,7 @@
 import Foundation
 import CoreData
 
+// TODO: add protocol to this
 final class CoreDataConfigurator {
     private let dataModelName: String
     

@@ -44,10 +44,9 @@ class PostTableView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func appendItems(posts: [Post], animate: Bool = true) {
-        if !snapshot.sectionIdentifiers.contains(.main) {
-            snapshot.appendSections([.main])
-        }
+    func addItems(posts: [Post], animate: Bool = true) {
+        var snapshot = NSDiffableDataSourceSnapshot<PostsTableViewSection, Post>()
+        snapshot.appendSections([.main])
         snapshot.appendItems(posts)
         
         tableViewDataSource.apply(snapshot, animatingDifferences: animate)

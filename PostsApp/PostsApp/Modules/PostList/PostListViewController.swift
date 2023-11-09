@@ -25,6 +25,7 @@ final class PostListViewController: UIViewController {
         
         setupViewModelCallbacks()
         
+        viewModel?.startObserving()
         Task {
             await viewModel?.loadLocalPosts()
             await viewModel?.loadRemotePosts()
@@ -35,12 +36,17 @@ final class PostListViewController: UIViewController {
         
         let random = Int.random(in: 1...200)
         let post = Post(title: "\(random)", body: "Body")
-        postTableView.appendItems(posts: [post])
+        viewModel?.savePost(post: post)
     }
     
     private func setupViewModelCallbacks() {
         viewModel?.onReceivePosts = { [weak self] posts in
-            self?.postTableView.appendItems(posts: posts, animate: false)
+            self?.postTableView.addItems(posts: posts, animate: true)
+        }
+        
+        viewModel?.onPostChange = { [weak self] result in
+            guard let self else { return }
+            self.postTableView.addItems(posts: result.value, animate: true)
         }
     }
     

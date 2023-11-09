@@ -15,7 +15,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let db = CoreDataManager(coreDataConfigurator: configuration)
         let localRepository = PostsLocalRepository(databaseManager: db)
         let repository = PostsRepositoryManager(localRepository: localRepository, remoteRepository: remoteRepository)
-        let viewModel = PostListViewModel(postsRepositoryManager: repository)
+        
+        let databaseObserver = CoreDataPostObserverConfigurator(coreDataConfigurator: configuration).configure()
+        let postDatabaseObserver = PostDatabaseObserver(databaseObserver: databaseObserver)
+
+        let viewModel = PostListViewModel(postsRepositoryManager: repository, postDatabaseObserver: postDatabaseObserver)
         let rootController = PostListViewController()
         rootController.viewModel = viewModel
         

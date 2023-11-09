@@ -14,7 +14,7 @@ final class PostsRepositoryManager: PostsRepositoryManagerProtocol {
         let result = await remoteRepository.loadPosts()
         switch result {
         case .success(let posts):
-            posts.forEach { localRepository.saveIfNotExists(post: $0) }
+            localRepository.saveNotExists(posts: posts)
             return .success(posts)
         case .failure(let error):
             return .failure(error)

@@ -17,15 +17,9 @@ final class PostsLocalRepository: PostsLocalRepositoryProtocol {
         }
     }
     
-    func saveIfNotExists(post: Post) {
-        do {
-            let predicate = NSPredicate(format: "title == %@", post.title)
-            if try !databaseManager.exists(PostManagedObject.self, predicate: predicate) {
-                save(post: post)
-            }
-        } catch {
-            
-        }
+    func saveNotExists(posts: [Post]) {
+        let filtered = posts.filter { !exists(post: $0) }
+        saveAll(posts: filtered)
     }
     
     func save(post: Post) {
@@ -44,5 +38,29 @@ final class PostsLocalRepository: PostsLocalRepositoryProtocol {
         do {
             try databaseManager.delete(object: postObject)
         } catch {}
+    }
+    
+    private func exists(post: Post) -> Bool {
+        let predicate = NSPredicate(format: "title == %@", post.title)
+        let value = try? databaseManager.exists(PostManagedObject.self, predicate: predicate)
+        return value ?? false
+    }
+    
+    private func saveAll(posts: [Post]) {
+        let objects = posts.map { convertToManagedObject(post: $0) }
+        
+        do {
+            if let object = objects.first {
+                try databaseManager.save(object: object)
+            }
+        } catch {}
+    }
+    
+    private func convertToManagedObject(post: Post) -> PostManagedObject {
+        let postObject = PostManagedObject(context: databaseManager.mainContext)
+        postObject.title = post.title
+        postObject.body = post.body
+        
+        return postObject
     }
 }
