@@ -5,4 +5,5 @@ enum DatabaseError: Error {
     case incorrectModel
     case delete
     case fetch
+    case exists
 }

@@ -51,11 +51,29 @@ extension CoreDataManager: DatabaseManager {
         }
     }
     
+    func exists<T>(_ model: T.Type, predicate: NSPredicate?) throws -> Bool where T : Storable {
+        guard let object = model as? NSManagedObject.Type else {
+            throw DatabaseError.incorrectModel
+        }
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: String(describing: object))
+        fetchRequest.predicate = predicate
+        
+        do {
+            let results = try mainContext.fetch(fetchRequest)
+            return results.count > 0
+        } catch {
+            throw DatabaseError.exists
+        }
+        
+    }
+    
     func fetch<T>(_ model: T.Type, predicate: NSPredicate?) throws -> [T] where T : Storable {
         guard let object = model as? NSManagedObject.Type else {
             throw DatabaseError.incorrectModel
         }
-        let fetchRequest = object.fetchRequest()
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: String(describing: object))
         fetchRequest.predicate = predicate
 
         do {

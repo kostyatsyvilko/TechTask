@@ -4,21 +4,32 @@ protocol PostListViewModelProtocol {
     var onReceivePosts: (@MainActor (_ posts: [Post]) -> Void)? { get set }
     
     func loadRemotePosts() async
-    func loadLocalPosts()
+    func loadLocalPosts() async
+    func deletePost(post: Post)
 }
 
 final class PostListViewModel: PostListViewModelProtocol {
     
-    private let postsRemoteRepository: PostsRepositoryProtocol
+    private let postsRepositoryManager: PostsRepositoryManagerProtocol
     
     var onReceivePosts: (@MainActor (_ posts: [Post]) -> Void)?
     
-    init(postsRemoteRepository: PostsRepositoryProtocol) {
-        self.postsRemoteRepository = postsRemoteRepository
+    init(postsRepositoryManager: PostsRepositoryManagerProtocol) {
+        self.postsRepositoryManager = postsRepositoryManager
     }
     
     func loadRemotePosts() async {
-        let result = await postsRemoteRepository.loadPosts()
+        let result = await postsRepositoryManager.loadRemotePosts()
+        switch result {
+        case .success(_):
+            break
+        case .failure(let error):
+            debugPrint(error)
+        }
+    }
+    
+    func loadLocalPosts() async {
+        let result = postsRepositoryManager.loadLocalPosts()
         switch result {
         case .success(let posts):
             await onReceivePosts?(posts)
@@ -27,5 +38,7 @@ final class PostListViewModel: PostListViewModelProtocol {
         }
     }
     
-    func loadLocalPosts() {}
+    func deletePost(post: Post) {
+        postsRepositoryManager.deleteLocal(post: post)
+    }
 }

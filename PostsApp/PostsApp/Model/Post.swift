@@ -13,4 +13,9 @@ struct Post: Hashable {
         self.title = post.title
         self.body = post.body
     }
+    
+    init(from post: PostManagedObject) {
+        self.title = post.title
+        self.body = post.body
+    }
 }

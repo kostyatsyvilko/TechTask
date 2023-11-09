@@ -44,12 +44,10 @@ class PostTableView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func addInitialItems(posts: [Post]) {
-        snapshot.appendSections([.main])
-        appendItems(posts: posts, animate: false)
-    }
-    
     func appendItems(posts: [Post], animate: Bool = true) {
+        if !snapshot.sectionIdentifiers.contains(.main) {
+            snapshot.appendSections([.main])
+        }
         snapshot.appendItems(posts)
         
         tableViewDataSource.apply(snapshot, animatingDifferences: animate)
@@ -60,5 +58,6 @@ class PostTableView: UIView {
             make.edges.equalToSuperview()
         }
     }
-    
 }
+
+

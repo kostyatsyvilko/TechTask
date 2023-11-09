@@ -8,6 +8,8 @@ final class PostListViewController: UIViewController {
         static var addButtonName = "plus"
     }
     
+    var viewModel: PostListViewModelProtocol?
+    
     private lazy var postTableView: PostTableView = {
         let tableView = PostTableView()
         
@@ -20,6 +22,13 @@ final class PostListViewController: UIViewController {
         super.viewDidLoad()
         configureNavigationBar()
         makeConstraints()
+        
+        setupViewModelCallbacks()
+        
+        Task {
+            await viewModel?.loadLocalPosts()
+            await viewModel?.loadRemotePosts()
+        }
     }
     
     @objc private func onPlusButtonTap() {
@@ -27,6 +36,12 @@ final class PostListViewController: UIViewController {
         let random = Int.random(in: 1...200)
         let post = Post(title: "\(random)", body: "Body")
         postTableView.appendItems(posts: [post])
+    }
+    
+    private func setupViewModelCallbacks() {
+        viewModel?.onReceivePosts = { [weak self] posts in
+            self?.postTableView.appendItems(posts: posts, animate: false)
+        }
     }
     
     private func configureNavigationBar() {

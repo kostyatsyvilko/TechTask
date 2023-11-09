@@ -1,13 +1,13 @@
 import Foundation
 
-final class PostsRemoteRepository: PostsRepositoryProtocol {
+final class PostsRemoteRepository: PostsRemoteRepositoryProtocol {
     private var apiClient: ApiClient
     
     init(apiClient: ApiClient) {
         self.apiClient = apiClient
     }
     
-    func loadPosts() async -> PostsResult {
+    func loadPosts() async -> PostsResultType {
         let request = PostsRequest()
         let result = await apiClient.send(request)
         
