@@ -6,13 +6,16 @@ final class PostListViewController: UIViewController {
     private enum Constants {
         static var navigationTitle = "Posts"
         static var addButtonName = "plus"
+        static var alertTitle = "Are you sure you want to delete?"
+        static var alertDeleteOption = "Yes"
+        static var alertCancelOption = "No"
     }
     
     var viewModel: PostListViewModelProtocol?
     
     private lazy var postTableView: PostTableView = {
         let tableView = PostTableView()
-        
+        tableView.delegate = self
         view.addSubview(tableView)
         
         return tableView
@@ -36,7 +39,7 @@ final class PostListViewController: UIViewController {
         
         let random = Int.random(in: 1...200)
         let post = Post(title: "\(random)", body: "Body")
-        viewModel?.savePost(post: post)
+        viewModel?.save(post: post)
     }
     
     private func setupViewModelCallbacks() {
@@ -62,5 +65,34 @@ final class PostListViewController: UIViewController {
         postTableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+    }
+}
+
+extension PostListViewController: PostTableViewDelegate {
+    func onPostDelete(post: Post) {
+        viewModel?.delete(post: post)
+    }
+    
+    func onPostLongPressed(post: Post) {
+        showActionSheet(for: post)
+    }
+    
+    private func showActionSheet(for post: Post) {
+        let actionSheet = UIAlertController(
+            title: Constants.alertTitle,
+            message: nil,
+            preferredStyle: .alert)
+        
+        let deleteAction = UIAlertAction(title: Constants.alertDeleteOption,
+                                         style: .destructive) { [unowned self] _ in
+            viewModel?.delete(post: post)
+        }
+        
+        let cancelAction = UIAlertAction(title: Constants.alertCancelOption, style: .cancel)
+        
+        actionSheet.addAction(deleteAction)
+        actionSheet.addAction(cancelAction)
+        
+        present(actionSheet, animated: true)
     }
 }

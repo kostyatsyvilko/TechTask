@@ -32,11 +32,12 @@ final class PostsLocalRepository: PostsLocalRepositoryProtocol {
     }
     
     func delete(post: Post) {
-        let postObject = PostManagedObject(context: databaseManager.mainContext)
-        postObject.title = post.title
-        postObject.body = post.body
+        let predicate = NSPredicate(format: "title == %@", post.title)
         do {
-            try databaseManager.delete(object: postObject)
+            let postObjects = try databaseManager.fetch(PostManagedObject.self, predicate: predicate)
+            if let postObject = postObjects.first {
+                try databaseManager.delete(object: postObject)
+            }
         } catch {}
     }
     

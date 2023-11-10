@@ -8,8 +8,8 @@ protocol PostListViewModelProtocol {
     
     func loadRemotePosts() async
     func loadLocalPosts() async
-    func deletePost(post: Post)
-    func savePost(post: Post)
+    func delete(post: Post)
+    func save(post: Post)
 }
 
 final class PostListViewModel: PostListViewModelProtocol {
@@ -51,11 +51,11 @@ final class PostListViewModel: PostListViewModelProtocol {
         }
     }
     
-    func savePost(post: Post) {
+    func save(post: Post) {
         postsRepositoryManager.saveLocal(post: post)
     }
     
-    func deletePost(post: Post) {
+    func delete(post: Post) {
         postsRepositoryManager.deleteLocal(post: post)
     }
 }
