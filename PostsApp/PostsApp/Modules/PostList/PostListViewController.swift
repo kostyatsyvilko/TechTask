@@ -36,10 +36,7 @@ final class PostListViewController: UIViewController {
     }
     
     @objc private func onPlusButtonTap() {
-        
-        let random = Int.random(in: 1...200)
-        let post = Post(title: "\(random)", body: "Body")
-        viewModel?.save(post: post)
+        viewModel?.goToAddPost()
     }
     
     private func setupViewModelCallbacks() {
@@ -74,10 +71,10 @@ extension PostListViewController: PostTableViewDelegate {
     }
     
     func onPostLongPressed(post: Post) {
-        showActionSheet(for: post)
+        showDeleteAler(for: post)
     }
     
-    private func showActionSheet(for post: Post) {
+    private func showDeleteAler(for post: Post) {
         let actionSheet = UIAlertController(
             title: Constants.alertTitle,
             message: nil,

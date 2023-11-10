@@ -7,18 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE0B58BA2AFE30EE00034D80 /* PostListViewController+Configurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0B58B92AFE30EE00034D80 /* PostListViewController+Configurator.swift */; };
+		CE0B58BC2AFE3B3500034D80 /* CoreDataConfiguratorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0B58BB2AFE3B3500034D80 /* CoreDataConfiguratorFactory.swift */; };
+		CE0C398B2AFE5DC500EBA406 /* AddPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0C398A2AFE5DC500EBA406 /* AddPostViewModel.swift */; };
 		CE1315EF2AFCDD7F006BD858 /* PostsRemoteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1315EE2AFCDD7F006BD858 /* PostsRemoteRepository.swift */; };
 		CE1315F22AFCE89F006BD858 /* PostsLocalRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1315F12AFCE89F006BD858 /* PostsLocalRepository.swift */; };
 		CE1315F42AFCE8C3006BD858 /* PostsLocalRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1315F32AFCE8C3006BD858 /* PostsLocalRepositoryProtocol.swift */; };
 		CE1315F72AFCE992006BD858 /* PostsRepositoryManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1315F62AFCE992006BD858 /* PostsRepositoryManagerProtocol.swift */; };
 		CE1315F92AFCE9C2006BD858 /* PostsRepositoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1315F82AFCE9C2006BD858 /* PostsRepositoryManager.swift */; };
 		CE1315FB2AFCEB80006BD858 /* PostsResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1315FA2AFCEB80006BD858 /* PostsResultType.swift */; };
+		CE28ABDF2AFE634000DB7D6E /* AddPostViewController+Configurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE28ABDE2AFE634000DB7D6E /* AddPostViewController+Configurator.swift */; };
 		CE2FE6902AFD2FDA00DAF54C /* CoreDataPostObserverConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2FE68F2AFD2FDA00DAF54C /* CoreDataPostObserverConfigurator.swift */; };
 		CE2FE6922AFD313D00DAF54C /* ObserverChangeResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2FE6912AFD313D00DAF54C /* ObserverChangeResult.swift */; };
 		CE2FE6942AFD31EB00DAF54C /* ObserverChangeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2FE6932AFD31EB00DAF54C /* ObserverChangeType.swift */; };
+		CE4FD8D72AFE2C8D0001A299 /* PostInjectionFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4FD8D62AFE2C8D0001A299 /* PostInjectionFactory.swift */; };
 		CE5504552AFB87290036BE9C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5504542AFB87290036BE9C /* AppDelegate.swift */; };
 		CE5504572AFB87290036BE9C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5504562AFB87290036BE9C /* SceneDelegate.swift */; };
-		CE5504592AFB87290036BE9C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5504582AFB87290036BE9C /* ViewController.swift */; };
 		CE55045E2AFB872A0036BE9C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE55045D2AFB872A0036BE9C /* Assets.xcassets */; };
 		CE5504612AFB872A0036BE9C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE55045F2AFB872A0036BE9C /* LaunchScreen.storyboard */; };
 		CE55046C2AFB872B0036BE9C /* PostsAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE55046B2AFB872B0036BE9C /* PostsAppTests.swift */; };
@@ -47,7 +51,13 @@
 		CE7575992AFCBECD00584C17 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7575982AFCBECD00584C17 /* PostTableViewCell.swift */; };
 		CE75759C2AFCBF2F00584C17 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = CE75759B2AFCBF2F00584C17 /* SnapKit */; };
 		CE84AA892AFD1C95008E593A /* CoreDataFetchedResultsObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE84AA882AFD1C95008E593A /* CoreDataFetchedResultsObserver.swift */; };
+		CEA84F832AFE1E07008053A6 /* AddPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA84F822AFE1E07008053A6 /* AddPostViewController.swift */; };
 		CEC6FABE2AFD49F60028E529 /* PostDatabaseObserverProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC6FABD2AFD49F60028E529 /* PostDatabaseObserverProtocol.swift */; };
+		CEFBB5CF2AFE1F5700FE8BA3 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFBB5CE2AFE1F5700FE8BA3 /* Coordinator.swift */; };
+		CEFBB5D12AFE202100FE8BA3 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFBB5D02AFE202100FE8BA3 /* AppCoordinator.swift */; };
+		CEFBB5D42AFE233100FE8BA3 /* JsonPlaceholderApiClientFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFBB5D32AFE233100FE8BA3 /* JsonPlaceholderApiClientFactory.swift */; };
+		CEFBB5D62AFE248A00FE8BA3 /* CoreDataManagerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFBB5D52AFE248A00FE8BA3 /* CoreDataManagerFactory.swift */; };
+		CEFBB5D82AFE25B300FE8BA3 /* CoreDataPostObserverFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFBB5D72AFE25B300FE8BA3 /* CoreDataPostObserverFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,19 +71,23 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CE0B58B92AFE30EE00034D80 /* PostListViewController+Configurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PostListViewController+Configurator.swift"; sourceTree = "<group>"; };
+		CE0B58BB2AFE3B3500034D80 /* CoreDataConfiguratorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataConfiguratorFactory.swift; sourceTree = "<group>"; };
+		CE0C398A2AFE5DC500EBA406 /* AddPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostViewModel.swift; sourceTree = "<group>"; };
 		CE1315EE2AFCDD7F006BD858 /* PostsRemoteRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsRemoteRepository.swift; sourceTree = "<group>"; };
 		CE1315F12AFCE89F006BD858 /* PostsLocalRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsLocalRepository.swift; sourceTree = "<group>"; };
 		CE1315F32AFCE8C3006BD858 /* PostsLocalRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsLocalRepositoryProtocol.swift; sourceTree = "<group>"; };
 		CE1315F62AFCE992006BD858 /* PostsRepositoryManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsRepositoryManagerProtocol.swift; sourceTree = "<group>"; };
 		CE1315F82AFCE9C2006BD858 /* PostsRepositoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsRepositoryManager.swift; sourceTree = "<group>"; };
 		CE1315FA2AFCEB80006BD858 /* PostsResultType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsResultType.swift; sourceTree = "<group>"; };
+		CE28ABDE2AFE634000DB7D6E /* AddPostViewController+Configurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddPostViewController+Configurator.swift"; sourceTree = "<group>"; };
 		CE2FE68F2AFD2FDA00DAF54C /* CoreDataPostObserverConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataPostObserverConfigurator.swift; sourceTree = "<group>"; };
 		CE2FE6912AFD313D00DAF54C /* ObserverChangeResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObserverChangeResult.swift; sourceTree = "<group>"; };
 		CE2FE6932AFD31EB00DAF54C /* ObserverChangeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObserverChangeType.swift; sourceTree = "<group>"; };
+		CE4FD8D62AFE2C8D0001A299 /* PostInjectionFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostInjectionFactory.swift; sourceTree = "<group>"; };
 		CE5504512AFB87290036BE9C /* PostsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PostsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE5504542AFB87290036BE9C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE5504562AFB87290036BE9C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CE5504582AFB87290036BE9C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CE55045D2AFB872A0036BE9C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE5504602AFB872A0036BE9C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE5504622AFB872A0036BE9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -103,7 +117,13 @@
 		CE7575952AFCBE8200584C17 /* PostListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListViewController.swift; sourceTree = "<group>"; };
 		CE7575982AFCBECD00584C17 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		CE84AA882AFD1C95008E593A /* CoreDataFetchedResultsObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataFetchedResultsObserver.swift; sourceTree = "<group>"; };
+		CEA84F822AFE1E07008053A6 /* AddPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostViewController.swift; sourceTree = "<group>"; };
 		CEC6FABD2AFD49F60028E529 /* PostDatabaseObserverProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDatabaseObserverProtocol.swift; sourceTree = "<group>"; };
+		CEFBB5CE2AFE1F5700FE8BA3 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		CEFBB5D02AFE202100FE8BA3 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		CEFBB5D32AFE233100FE8BA3 /* JsonPlaceholderApiClientFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonPlaceholderApiClientFactory.swift; sourceTree = "<group>"; };
+		CEFBB5D52AFE248A00FE8BA3 /* CoreDataManagerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManagerFactory.swift; sourceTree = "<group>"; };
+		CEFBB5D72AFE25B300FE8BA3 /* CoreDataPostObserverFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataPostObserverFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,8 +191,9 @@
 				CE5504A32AFBB7E00036BE9C /* Model */,
 				CE5504A92AFBC5540036BE9C /* Storage */,
 				CE5504862AFB99DF0036BE9C /* Resource */,
+				CEFBB5D22AFE228500FE8BA3 /* InjectionFactory */,
+				CEFBB5CD2AFE1F3E00FE8BA3 /* Coordinator */,
 				CE7575932AFCBE5400584C17 /* Modules */,
-				CE5504582AFB87290036BE9C /* ViewController.swift */,
 				CE55045F2AFB872A0036BE9C /* LaunchScreen.storyboard */,
 			);
 			path = PostsApp;
@@ -348,6 +369,7 @@
 			isa = PBXGroup;
 			children = (
 				CE7575942AFCBE6A00584C17 /* PostList */,
+				CEA84F812AFE1DCE008053A6 /* AddPost */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -357,6 +379,7 @@
 			children = (
 				CE7575972AFCBEB400584C17 /* Subviews */,
 				CE7575952AFCBE8200584C17 /* PostListViewController.swift */,
+				CE0B58B92AFE30EE00034D80 /* PostListViewController+Configurator.swift */,
 				CE56CB442AFCD450008FD671 /* PostListViewModel.swift */,
 			);
 			path = PostList;
@@ -380,6 +403,45 @@
 				CE2FE6932AFD31EB00DAF54C /* ObserverChangeType.swift */,
 			);
 			path = DatabaseObserver;
+			sourceTree = "<group>";
+		};
+		CEA84F812AFE1DCE008053A6 /* AddPost */ = {
+			isa = PBXGroup;
+			children = (
+				CEE42EB42AFE6CA7007DC2F5 /* Subviews */,
+				CEA84F822AFE1E07008053A6 /* AddPostViewController.swift */,
+				CE28ABDE2AFE634000DB7D6E /* AddPostViewController+Configurator.swift */,
+				CE0C398A2AFE5DC500EBA406 /* AddPostViewModel.swift */,
+			);
+			path = AddPost;
+			sourceTree = "<group>";
+		};
+		CEE42EB42AFE6CA7007DC2F5 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
+		CEFBB5CD2AFE1F3E00FE8BA3 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				CEFBB5CE2AFE1F5700FE8BA3 /* Coordinator.swift */,
+				CEFBB5D02AFE202100FE8BA3 /* AppCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		CEFBB5D22AFE228500FE8BA3 /* InjectionFactory */ = {
+			isa = PBXGroup;
+			children = (
+				CEFBB5D32AFE233100FE8BA3 /* JsonPlaceholderApiClientFactory.swift */,
+				CEFBB5D52AFE248A00FE8BA3 /* CoreDataManagerFactory.swift */,
+				CE0B58BB2AFE3B3500034D80 /* CoreDataConfiguratorFactory.swift */,
+				CEFBB5D72AFE25B300FE8BA3 /* CoreDataPostObserverFactory.swift */,
+				CE4FD8D62AFE2C8D0001A299 /* PostInjectionFactory.swift */,
+			);
+			path = InjectionFactory;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -490,18 +552,24 @@
 			files = (
 				CE56CB432AFCD176008FD671 /* PostTableView.swift in Sources */,
 				CE7575922AFCBE2200584C17 /* JsonPlaceholderError.swift in Sources */,
+				CEFBB5D62AFE248A00FE8BA3 /* CoreDataManagerFactory.swift in Sources */,
 				CE2FE6922AFD313D00DAF54C /* ObserverChangeResult.swift in Sources */,
 				CE5504BB2AFBD32C0036BE9C /* DatabaseManager.swift in Sources */,
 				CE1315F72AFCE992006BD858 /* PostsRepositoryManagerProtocol.swift in Sources */,
 				CE5504B12AFBC7200036BE9C /* PostManagedObject.swift in Sources */,
+				CE0B58BC2AFE3B3500034D80 /* CoreDataConfiguratorFactory.swift in Sources */,
+				CEFBB5CF2AFE1F5700FE8BA3 /* Coordinator.swift in Sources */,
 				CE5504B52AFBC89E0036BE9C /* CoreDataConfigurator.swift in Sources */,
+				CEA84F832AFE1E07008053A6 /* AddPostViewController.swift in Sources */,
 				CE1315EF2AFCDD7F006BD858 /* PostsRemoteRepository.swift in Sources */,
 				CE1315F22AFCE89F006BD858 /* PostsLocalRepository.swift in Sources */,
-				CE5504592AFB87290036BE9C /* ViewController.swift in Sources */,
 				CEC6FABE2AFD49F60028E529 /* PostDatabaseObserverProtocol.swift in Sources */,
+				CEFBB5D82AFE25B300FE8BA3 /* CoreDataPostObserverFactory.swift in Sources */,
 				CE5504AD2AFBC61C0036BE9C /* PostsModel.xcdatamodeld in Sources */,
 				CE5504BD2AFBD7240036BE9C /* DatabaseError.swift in Sources */,
 				CE1315FB2AFCEB80006BD858 /* PostsResultType.swift in Sources */,
+				CEFBB5D12AFE202100FE8BA3 /* AppCoordinator.swift in Sources */,
+				CEFBB5D42AFE233100FE8BA3 /* JsonPlaceholderApiClientFactory.swift in Sources */,
 				CE5504552AFB87290036BE9C /* AppDelegate.swift in Sources */,
 				CE5504BF2AFBDD5E0036BE9C /* DBConstants.swift in Sources */,
 				CE5504B92AFBD2780036BE9C /* CoreDataManager.swift in Sources */,
@@ -518,11 +586,15 @@
 				CE2FE6902AFD2FDA00DAF54C /* CoreDataPostObserverConfigurator.swift in Sources */,
 				CE5504A62AFBB8140036BE9C /* PostsRemoteRepositoryProtocol.swift in Sources */,
 				CE55049E2AFBAC1A0036BE9C /* ApiConfig.swift in Sources */,
+				CE28ABDF2AFE634000DB7D6E /* AddPostViewController+Configurator.swift in Sources */,
+				CE4FD8D72AFE2C8D0001A299 /* PostInjectionFactory.swift in Sources */,
 				CE7575902AFCBDE100584C17 /* ApiManager.swift in Sources */,
 				CE1315F42AFCE8C3006BD858 /* PostsLocalRepositoryProtocol.swift in Sources */,
 				CE55049C2AFBABA20036BE9C /* PostsRequest.swift in Sources */,
 				CE5504912AFBAA220036BE9C /* ApiRequest.swift in Sources */,
 				CE75758E2AFCBDA500584C17 /* PostResponse.swift in Sources */,
+				CE0C398B2AFE5DC500EBA406 /* AddPostViewModel.swift in Sources */,
+				CE0B58BA2AFE30EE00034D80 /* PostListViewController+Configurator.swift in Sources */,
 				CE55048F2AFBAA100036BE9C /* ApiClient.swift in Sources */,
 				CE84AA892AFD1C95008E593A /* CoreDataFetchedResultsObserver.swift in Sources */,
 			);

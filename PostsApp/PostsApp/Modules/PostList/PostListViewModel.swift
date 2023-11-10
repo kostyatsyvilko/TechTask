@@ -10,20 +10,25 @@ protocol PostListViewModelProtocol {
     func loadLocalPosts() async
     func delete(post: Post)
     func save(post: Post)
+    
+    func goToAddPost()
 }
 
 final class PostListViewModel: PostListViewModelProtocol {
     
     private let postsRepositoryManager: PostsRepositoryManagerProtocol
     private var postDatabaseObserver: PostDatabaseObserverProtocol
+    private let coordinator: AppCoordinator
     
     var onReceivePosts: (@MainActor (_ posts: [Post]) -> Void)?
     var onPostChange: ((ObserverChangeResult<[Post]>) -> Void)?
     
     init(postsRepositoryManager: PostsRepositoryManagerProtocol,
-         postDatabaseObserver: PostDatabaseObserverProtocol) {
+         postDatabaseObserver: PostDatabaseObserverProtocol,
+         coordinator: AppCoordinator) {
         self.postsRepositoryManager = postsRepositoryManager
         self.postDatabaseObserver = postDatabaseObserver
+        self.coordinator = coordinator
     }
     
     func startObserving() {
@@ -57,5 +62,11 @@ final class PostListViewModel: PostListViewModelProtocol {
     
     func delete(post: Post) {
         postsRepositoryManager.deleteLocal(post: post)
+    }
+}
+
+extension PostListViewModel {
+    func goToAddPost() {
+        coordinator.goToAddPost()
     }
 }
