@@ -17,7 +17,7 @@ protocol PostListViewModelProtocol {
 final class PostListViewModel: PostListViewModelProtocol {
     
     private let postsRepositoryManager: PostsRepositoryManagerProtocol
-    private var postDatabaseObserver: PostDatabaseObserverProtocol
+    private var postDatabaseObserver: PostDatabaseObserver
     private let coordinator: AppCoordinator
     
     var onReceivePosts: ((_ posts: [Post]) -> Void)?
@@ -25,7 +25,7 @@ final class PostListViewModel: PostListViewModelProtocol {
     var onReceiveError: ((Error) -> Void)?
     
     init(postsRepositoryManager: PostsRepositoryManagerProtocol,
-         postDatabaseObserver: PostDatabaseObserverProtocol,
+         postDatabaseObserver: PostDatabaseObserver,
          coordinator: AppCoordinator) {
         self.postsRepositoryManager = postsRepositoryManager
         self.postDatabaseObserver = postDatabaseObserver

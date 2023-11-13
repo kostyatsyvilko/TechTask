@@ -10,7 +10,7 @@ protocol CoreDataPostManagerProtocol {
 }
 
 final class CoreDataPostManager: CoreDataPostManagerProtocol {
-    private let coreDataConfigurator: CoreDataConfigurator
+    private let coreDataConfigurator: CoreDataConfigurable
     
     private var mainContext: NSManagedObjectContext {
         coreDataConfigurator.managedObject
@@ -22,7 +22,7 @@ final class CoreDataPostManager: CoreDataPostManagerProtocol {
         return context
     }()
     
-    init(coreDataConfigurator: CoreDataConfigurator) {
+    init(coreDataConfigurator: CoreDataConfigurable) {
         self.coreDataConfigurator = coreDataConfigurator
     }
     

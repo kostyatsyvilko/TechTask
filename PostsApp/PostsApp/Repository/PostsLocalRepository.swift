@@ -3,8 +3,8 @@ import Foundation
 final class PostsLocalRepository: PostsLocalRepositoryProtocol {
     private let coreDataManager: CoreDataPostManagerProtocol
     
-    init(databaseManager: CoreDataPostManagerProtocol) {
-        self.coreDataManager = databaseManager
+    init(coreDataManager: CoreDataPostManagerProtocol) {
+        self.coreDataManager = coreDataManager
     }
     
     func loadPosts() -> PostsResultType {

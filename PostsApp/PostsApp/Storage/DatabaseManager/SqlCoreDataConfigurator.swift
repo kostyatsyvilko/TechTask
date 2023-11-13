@@ -1,7 +1,7 @@
 import Foundation
 import CoreData
 
-final class SqlCoreDataConfigurator: CoreDataConfigurator {
+final class SqlCoreDataConfigurator: CoreDataConfigurable {
     private let dataModelName: String
     
     private(set) lazy var persistentContainer: NSPersistentContainer = {

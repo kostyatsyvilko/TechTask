@@ -1,14 +1,8 @@
 import Foundation
 import CoreData
 
-final class CoreDataPostObserverConfigurator {
-    private let coreDataConfigurator: CoreDataConfigurator
-    
-    init(coreDataConfigurator: CoreDataConfigurator) {
-        self.coreDataConfigurator = coreDataConfigurator
-    }
-    
-    func configure() -> CoreDataFetchedResultsObserver<PostManagedObject> {
+enum CoreDataPostObserverConfigurator {
+    static func configure(configurator: CoreDataConfigurable) -> CoreDataFetchedResultsObserver<PostManagedObject> {
         let fetchRequest = NSFetchRequest<PostManagedObject>(entityName: "PostManagedObject")
         
         let sortDescription = NSSortDescriptor(key: "title",
@@ -17,7 +11,7 @@ final class CoreDataPostObserverConfigurator {
         fetchRequest.sortDescriptors = [sortDescription]
         
         let observer = CoreDataFetchedResultsObserver<PostManagedObject>(fetchRequest: fetchRequest,
-                                                                         managedObjectContext: coreDataConfigurator.managedObject)
+                                                                         managedObjectContext: configurator.managedObject)
         return observer
     }
 }

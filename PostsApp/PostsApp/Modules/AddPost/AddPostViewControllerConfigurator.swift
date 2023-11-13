@@ -2,7 +2,7 @@ import Foundation
 
 enum AddPostViewControllerConfigurator {
     static func configure(coordinator: AppCoordinator,
-                          configurator: CoreDataConfigurator) -> AddPostViewController {
+                          configurator: CoreDataConfigurable) -> AddPostViewController {
         let localRepository = AddPostInjectionFactory.createPostsLocalRepository(configurator: configurator)
         let viewModel = AddPostViewModel(localPostsRepository: localRepository,
                                          coordinator: coordinator)
