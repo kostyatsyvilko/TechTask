@@ -1,6 +1,6 @@
 import Foundation
 
-enum JsonPlaceholderError: Error, LocalizedError {
+enum ApiError: LocalizedError {
     case encoding
     case decoding
     case incorrectUrl

@@ -11,7 +11,7 @@ class PostRepository: ApiClient {
     
     func send<T>(_ request: T) async -> ApiClientResult<T.Response> where T : ApiRequest {
         guard let url = URL(string: baseUrlString + request.resourceName) else {
-            return .failure(JsonPlaceholderError.incorrectUrl)
+            return .failure(ApiError.incorrectUrl)
         }
         let result = await apiManager.send(url: url, headers: [:])
         
@@ -22,7 +22,7 @@ class PostRepository: ApiClient {
             if let model = model {
                 return .success(model)
             } else {
-                return .failure(JsonPlaceholderError.decoding)
+                return .failure(ApiError.decoding)
             }
         case .failure(let error):
             return .failure(error)
