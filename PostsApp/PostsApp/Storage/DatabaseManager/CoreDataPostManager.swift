@@ -13,7 +13,7 @@ final class CoreDataPostManager: CoreDataPostManagerProtocol {
     private let coreDataConfigurator: CoreDataConfigurable
     
     private var mainContext: NSManagedObjectContext {
-        coreDataConfigurator.managedObject
+        coreDataConfigurator.managedObjectContext
     }
     
     private lazy var childContext: NSManagedObjectContext = {

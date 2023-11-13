@@ -3,5 +3,5 @@ import CoreData
 
 protocol CoreDataConfigurable {
     var persistentContainer: NSPersistentContainer { get }
-    var managedObject: NSManagedObjectContext { get }
+    var managedObjectContext: NSManagedObjectContext { get }
 }

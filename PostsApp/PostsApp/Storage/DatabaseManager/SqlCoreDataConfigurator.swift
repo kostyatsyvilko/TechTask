@@ -15,7 +15,7 @@ final class SqlCoreDataConfigurator: CoreDataConfigurable {
         return container
     }()
     
-    private(set) lazy var managedObject: NSManagedObjectContext = {
+    private(set) lazy var managedObjectContext: NSManagedObjectContext = {
         return persistentContainer.viewContext
     }()
     

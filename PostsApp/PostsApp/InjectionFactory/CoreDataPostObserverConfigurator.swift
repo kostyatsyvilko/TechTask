@@ -11,7 +11,7 @@ enum CoreDataPostObserverConfigurator {
         fetchRequest.sortDescriptors = [sortDescription]
         
         let observer = CoreDataFetchedResultsObserver<PostManagedObject>(fetchRequest: fetchRequest,
-                                                                         managedObjectContext: configurator.managedObject)
+                                                                         managedObjectContext: configurator.managedObjectContext)
         return observer
     }
 }
