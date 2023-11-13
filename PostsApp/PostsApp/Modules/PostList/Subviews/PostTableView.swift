@@ -35,7 +35,7 @@ final class PostTableView: UIView {
     private lazy var tableViewDataSource: UITableViewDiffableDataSource<PostsTableViewSection, Post> = {
         let dataSource = UITableViewDiffableDataSource<PostsTableViewSection, Post>(tableView: postsTableView) { tableView, _, model in
             guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.postCellReuseIdentifier) as? PostTableViewCell else {
-                return UITableViewCell()
+                return nil
             }
             cell.configure(title: model.title, body: model.body)
             return cell
