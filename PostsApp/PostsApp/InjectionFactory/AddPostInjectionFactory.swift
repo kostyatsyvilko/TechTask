@@ -1,8 +1,8 @@
 import Foundation
 
 enum AddPostInjectionFactory {
-    static func createPostsLocalRepository(configurator: CoreDataConfigurable) -> PostsLocalRepositoryProtocol {
+    static func createPostsLocalRepository(configurator: CoreDataConfigurable) -> PostLocalRepositoryProtocol {
         let dbManager = CoreDataPostManager(coreDataConfigurator: configurator)
-        return PostsLocalRepository(coreDataManager: dbManager)
+        return PostLocalRepository(coreDataManager: dbManager)
     }
 }

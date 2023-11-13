@@ -1,6 +1,6 @@
 import Foundation
 
-protocol PostsLocalRepositoryProtocol {
+protocol PostLocalRepositoryProtocol {
     func loadPosts() -> PostsResultType
     func exists(with title: String) -> Bool
     func saveNotExists(posts: [Post])

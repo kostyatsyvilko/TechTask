@@ -1,6 +1,6 @@
 import Foundation
 
-final class PostsLocalRepository: PostsLocalRepositoryProtocol {
+final class PostLocalRepository: PostLocalRepositoryProtocol {
     private let coreDataManager: CoreDataPostManagerProtocol
     
     init(coreDataManager: CoreDataPostManagerProtocol) {

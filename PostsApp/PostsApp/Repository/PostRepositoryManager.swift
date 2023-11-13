@@ -1,11 +1,11 @@
 import Foundation
 
-final class PostsRepositoryManager: PostsRepositoryManagerProtocol {
-    private let localRepository: PostsLocalRepositoryProtocol
-    private let remoteRepository: PostsRemoteRepositoryProtocol
+final class PostRepositoryManager: PostRepositoryManagerProtocol {
+    private let localRepository: PostLocalRepositoryProtocol
+    private let remoteRepository: PostRemoteRepositoryProtocol
     
-    init(localRepository: PostsLocalRepositoryProtocol,
-         remoteRepository: PostsRemoteRepositoryProtocol) {
+    init(localRepository: PostLocalRepositoryProtocol,
+         remoteRepository: PostRemoteRepositoryProtocol) {
         self.localRepository = localRepository
         self.remoteRepository = remoteRepository
     }

@@ -26,13 +26,13 @@ final class AddPostViewModel: AddPostViewModelProtocol {
         static let postExistsMessage = "There is already post with the same title"
     }
     
-    private let localPostsRepository: PostsLocalRepositoryProtocol
+    private let localPostsRepository: PostLocalRepositoryProtocol
     private let coordinator: AppCoordinator
     
     var onReceiveError: ((Error) -> Void)?
     var onSaveSuccess: (() -> Void)?
     
-    init(localPostsRepository: PostsLocalRepositoryProtocol,
+    init(localPostsRepository: PostLocalRepositoryProtocol,
          coordinator: AppCoordinator) {
         self.localPostsRepository = localPostsRepository
         self.coordinator = coordinator

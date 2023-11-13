@@ -1,6 +1,6 @@
 import Foundation
 
-final class PostsRemoteRepository: PostsRemoteRepositoryProtocol {
+final class PostRemoteRepository: PostRemoteRepositoryProtocol {
     private let apiClient: ApiClient
     
     init(apiClient: ApiClient) {

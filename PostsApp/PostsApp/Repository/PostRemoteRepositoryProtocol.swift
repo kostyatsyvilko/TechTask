@@ -1,6 +1,6 @@
 import Foundation
 
-protocol PostsRemoteRepositoryProtocol {
+protocol PostRemoteRepositoryProtocol {
     func loadPosts() async -> PostsResultType
 }
 
