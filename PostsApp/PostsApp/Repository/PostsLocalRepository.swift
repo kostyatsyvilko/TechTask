@@ -1,15 +1,15 @@
 import Foundation
 
 final class PostsLocalRepository: PostsLocalRepositoryProtocol {
-    private let databaseManager: CoreDataManager
+    private let coreDataManager: CoreDataPostManagerProtocol
     
-    init(databaseManager: CoreDataManager) {
-        self.databaseManager = databaseManager
+    init(databaseManager: CoreDataPostManagerProtocol) {
+        self.coreDataManager = databaseManager
     }
     
     func loadPosts() -> PostsResultType {
         do {
-            let result = try databaseManager.fetch(PostManagedObject.self, predicate: nil)
+            let result = try coreDataManager.fetch(predicate: nil)
             let posts = result.map { Post(from: $0) }.sorted { $0.title.caseInsensitiveCompare($1.title) == .orderedAscending }
             return .success(posts)
         } catch let error {
@@ -23,39 +23,19 @@ final class PostsLocalRepository: PostsLocalRepositoryProtocol {
     }
     
     func exists(with title: String) -> Bool {
-        let predicate = NSPredicate(format: "title == %@", title)
-        let value = try? databaseManager.exists(PostManagedObject.self, predicate: predicate)
+        let value = try? coreDataManager.exists(with: title)
         return value ?? false
     }
     
     func save(post: Post) throws {
-        let postObject = PostManagedObject(context: databaseManager.childContext)
-        postObject.title = post.title
-        postObject.body = post.body
-        try databaseManager.save(object: postObject)
+        try coreDataManager.save(post: post)
     }
     
     func delete(post: Post) throws {
-        let predicate = NSPredicate(format: "title == %@", post.title)
-        let postObjects = try databaseManager.fetch(PostManagedObject.self, predicate: predicate)
-        if let postObject = postObjects.first {
-            try databaseManager.delete(object: postObject)
-        }
-     
+        try coreDataManager.delete(for: post.title)
     }
     
     private func saveAll(posts: [Post]) {
-        let objects = posts.map { convertToManagedObject(post: $0) }
-        if let object = objects.first {
-            try? databaseManager.save(object: object)
-        }
-    }
-    
-    private func convertToManagedObject(post: Post) -> PostManagedObject {
-        let postObject = PostManagedObject(context: databaseManager.mainContext)
-        postObject.title = post.title
-        postObject.body = post.body
-        
-        return postObject
+        try? coreDataManager.save(posts: posts)
     }
 }

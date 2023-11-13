@@ -17,7 +17,7 @@ final class PostInjectionFactory {
     }
     
     func createPostsLocalRepository() -> PostsLocalRepositoryProtocol {
-        let dbManager = CoreDataManagerFactory.create(coreDataConfigurator: coreDataConfigurator)
+        let dbManager = CoreDataPostManagerFactory.create(coreDataConfigurator: coreDataConfigurator)
         return PostsLocalRepository(databaseManager: dbManager)
     }
     
