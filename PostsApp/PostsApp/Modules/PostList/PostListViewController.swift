@@ -22,6 +22,13 @@ final class PostListViewController: BaseViewController {
         return tableView
     }()
     
+    private lazy var loadingView: UIActivityIndicatorView = {
+        let view = UIActivityIndicatorView(style: .medium)
+        
+        self.view.addSubview(view)
+        return view
+    }()
+    
     init(viewModel: PostListViewModelProtocol) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -38,6 +45,8 @@ final class PostListViewController: BaseViewController {
         
         setupViewModelCallbacks()
         
+        loadingView.startAnimating()
+        
         viewModel.startObserving()
         Task {
             await viewModel.loadPosts()
@@ -50,11 +59,15 @@ final class PostListViewController: BaseViewController {
     
     private func setupViewModelCallbacks() {
         viewModel.onReceivePosts = { [weak self] posts in
+            if posts.count > 0 {
+                self?.loadingView.stopAnimating()
+            }
             self?.postTableView.addItems(posts: posts, animate: true)
         }
         
         viewModel.onPostChange = { [weak self] result in
             guard let self else { return }
+            loadingView.stopAnimating()
             self.postTableView.addItems(posts: result.value, animate: true)
         }
         
@@ -74,6 +87,10 @@ final class PostListViewController: BaseViewController {
     private func makeConstraints() {
         postTableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
+        }
+        
+        loadingView.snp.makeConstraints { make in
+            make.center.equalToSuperview()
         }
     }
 }
