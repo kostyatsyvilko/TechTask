@@ -97,7 +97,13 @@ final class AddPostViewController: BaseViewController {
     }
     
     @objc private func onBackButtonTap() {
-        showGoBackWarningAlert()
+        let isTextFieldEmpty = titleTextField.text?.isEmpty ?? true
+        if (isTextBodyNotEmpty && bodyTextView.text != Constants.defaultTextViewText) ||
+            (!isTextFieldEmpty && bodyTextView.text == Constants.defaultTextViewText) {
+            showGoBackWarningAlert()
+        } else {
+            viewModel.goBack()
+        }
     }
     
     private func setupViewModelCallbacks() {
