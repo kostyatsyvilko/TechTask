@@ -1,14 +1,15 @@
 import UIKit
 import SnapKit
 
-final class PostListViewController: UIViewController {
+final class PostListViewController: BaseViewController {
     
     private enum Constants {
-        static var navigationTitle = "Posts"
-        static var addButtonName = "plus"
-        static var alertTitle = "Are you sure you want to delete?"
-        static var alertDeleteOption = "Yes"
-        static var alertCancelOption = "No"
+        static let navigationTitle = "Posts"
+        static let addButtonName = "plus"
+        static let alertTitle = "Are you sure you want to delete?"
+        static let alertDeleteOption = "Yes"
+        static let alertCancelOption = "No"
+        static let errorAlertTitle = "Error"
     }
     
     var viewModel: PostListViewModelProtocol?
@@ -47,6 +48,10 @@ final class PostListViewController: UIViewController {
         viewModel?.onPostChange = { [weak self] result in
             guard let self else { return }
             self.postTableView.addItems(posts: result.value, animate: true)
+        }
+        
+        viewModel?.onReceiveError = { [weak self] error in
+            self?.showErrorAlert(title: Constants.errorAlertTitle, message: error.localizedDescription)
         }
     }
     

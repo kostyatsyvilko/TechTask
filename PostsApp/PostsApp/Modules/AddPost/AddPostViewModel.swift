@@ -1,11 +1,21 @@
 import Foundation
 
-enum AddPostViewModelError: Error {
+enum AddPostViewModelError: Error, LocalizedError {
     case postExists(message: String)
+    
+    var errorDescription: String? {
+        switch self {
+        case .postExists(let message):
+            return message
+        }
+    }
 }
 
 protocol AddPostViewModelProtocol {
-    func save(post: Post) throws
+    var onReceiveError: ((Error) -> Void)? { get set }
+    var onSaveSuccess: (() -> Void)? { get set }
+    
+    func save(post: Post)
     
     func goBack()
 }
@@ -19,18 +29,27 @@ final class AddPostViewModel: AddPostViewModelProtocol {
     private let localPostsRepository: PostsLocalRepositoryProtocol
     private let coordinator: AppCoordinator
     
+    var onReceiveError: ((Error) -> Void)?
+    var onSaveSuccess: (() -> Void)?
+    
     init(localPostsRepository: PostsLocalRepositoryProtocol,
          coordinator: AppCoordinator) {
         self.localPostsRepository = localPostsRepository
         self.coordinator = coordinator
     }
     
-    func save(post: Post) throws {
+    func save(post: Post) {
         if localPostsRepository.exists(with: post.title) {
-            throw AddPostViewModelError.postExists(message: Constants.postExistsMessage)
+            onReceiveError?(AddPostViewModelError.postExists(message: Constants.postExistsMessage))
+            return
         }
         
-        localPostsRepository.save(post: post)
+        do {
+            try localPostsRepository.save(post: post)
+            onSaveSuccess?()
+        } catch let error {
+            onReceiveError?(error)
+        }
     }
 }
 

@@ -28,33 +28,27 @@ final class PostsLocalRepository: PostsLocalRepositoryProtocol {
         return value ?? false
     }
     
-    func save(post: Post) {
+    func save(post: Post) throws {
         let postObject = PostManagedObject(context: databaseManager.childContext)
         postObject.title = post.title
         postObject.body = post.body
-        do {
-            try databaseManager.save(object: postObject)
-        } catch {}
+        try databaseManager.save(object: postObject)
     }
     
-    func delete(post: Post) {
+    func delete(post: Post) throws {
         let predicate = NSPredicate(format: "title == %@", post.title)
-        do {
-            let postObjects = try databaseManager.fetch(PostManagedObject.self, predicate: predicate)
-            if let postObject = postObjects.first {
-                try databaseManager.delete(object: postObject)
-            }
-        } catch {}
+        let postObjects = try databaseManager.fetch(PostManagedObject.self, predicate: predicate)
+        if let postObject = postObjects.first {
+            try databaseManager.delete(object: postObject)
+        }
+     
     }
     
     private func saveAll(posts: [Post]) {
         let objects = posts.map { convertToManagedObject(post: $0) }
-        
-        do {
-            if let object = objects.first {
-                try databaseManager.save(object: object)
-            }
-        } catch {}
+        if let object = objects.first {
+            try? databaseManager.save(object: object)
+        }
     }
     
     private func convertToManagedObject(post: Post) -> PostManagedObject {

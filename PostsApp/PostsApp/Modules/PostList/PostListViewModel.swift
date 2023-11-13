@@ -3,6 +3,7 @@ import Foundation
 protocol PostListViewModelProtocol {
     var onReceivePosts: (@MainActor (_ posts: [Post]) -> Void)? { get set }
     var onPostChange: ((ObserverChangeResult<[Post]>) -> Void)? { get set }
+    var onReceiveError: ((Error) -> Void)? { get set }
     
     func startObserving()
     
@@ -22,6 +23,7 @@ final class PostListViewModel: PostListViewModelProtocol {
     
     var onReceivePosts: (@MainActor (_ posts: [Post]) -> Void)?
     var onPostChange: ((ObserverChangeResult<[Post]>) -> Void)?
+    var onReceiveError: ((Error) -> Void)?
     
     init(postsRepositoryManager: PostsRepositoryManagerProtocol,
          postDatabaseObserver: PostDatabaseObserverProtocol,
@@ -42,7 +44,7 @@ final class PostListViewModel: PostListViewModelProtocol {
         case .success(_):
             break
         case .failure(let error):
-            debugPrint(error)
+            onReceiveError?(error)
         }
     }
     
@@ -52,16 +54,24 @@ final class PostListViewModel: PostListViewModelProtocol {
         case .success(let posts):
             await onReceivePosts?(posts)
         case .failure(let error):
-            debugPrint(error)
+            onReceiveError?(error)
         }
     }
     
     func save(post: Post) {
-        postsRepositoryManager.saveLocal(post: post)
+        do {
+            try postsRepositoryManager.saveLocal(post: post)
+        } catch let error {
+            onReceiveError?(error)
+        }
     }
     
     func delete(post: Post) {
-        postsRepositoryManager.deleteLocal(post: post)
+        do {
+            try postsRepositoryManager.deleteLocal(post: post)
+        } catch let error {
+            onReceiveError?(error)
+        }
     }
 }
 

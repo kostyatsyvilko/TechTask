@@ -25,11 +25,11 @@ final class PostsRepositoryManager: PostsRepositoryManagerProtocol {
         localRepository.loadPosts()
     }
     
-    func saveLocal(post: Post) {
-        localRepository.save(post: post)
+    func saveLocal(post: Post) throws {
+        try localRepository.save(post: post)
     }
     
-    func deleteLocal(post: Post) {
-        localRepository.delete(post: post)
+    func deleteLocal(post: Post) throws {
+        try localRepository.delete(post: post)
     }
 }
