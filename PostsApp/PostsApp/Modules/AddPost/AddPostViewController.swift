@@ -17,10 +17,9 @@ final class AddPostViewController: BaseViewController {
         static let noAlertOption = "No"
         static let goBackWarningMessage = "You are trying to navigate back, but you entered some data and you will lost it. Are you sure you want to continue?"
         static let contentInsets = UIEdgeInsets(top: 10, left: 20, bottom: 20, right: 20)
-        
     }
     
-    var viewModel: AddPostViewModel?
+    private var viewModel: AddPostViewModelProtocol
     
     private var isTextBodyNotEmpty: Bool {
         !(titleTextField.text ?? "").isEmpty && !bodyTextView.text.isEmpty
@@ -58,6 +57,15 @@ final class AddPostViewController: BaseViewController {
         return stackView
     }()
     
+    init(viewModel: AddPostViewModelProtocol) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -85,7 +93,7 @@ final class AddPostViewController: BaseViewController {
     @objc private func onAddButtonTap() {
         view.endEditing(true)
         let post = Post(title: titleTextField.text ?? "", body: bodyTextView.text)
-        viewModel?.save(post: post)
+        viewModel.save(post: post)
     }
     
     @objc private func onBackButtonTap() {
@@ -93,12 +101,12 @@ final class AddPostViewController: BaseViewController {
     }
     
     private func setupViewModelCallbacks() {
-        viewModel?.onReceiveError = { [weak self] error in
+        viewModel.onReceiveError = { [weak self] error in
             self?.showErrorAlert(title: Constants.errorAlertTitle, message: error.localizedDescription)
         }
         
-        viewModel?.onSaveSuccess = { [weak self] in
-            self?.viewModel?.goBack()
+        viewModel.onSaveSuccess = { [weak self] in
+            self?.viewModel.goBack()
         }
     }
     
@@ -118,7 +126,7 @@ extension AddPostViewController {
         
         let yesAction = UIAlertAction(title: Constants.yesAlertOption,
                                       style: .cancel) { [unowned self] _ in
-            self.viewModel?.goBack()
+            self.viewModel.goBack()
         }
     
         let noAction = UIAlertAction(title: Constants.noAlertOption, style: .default)

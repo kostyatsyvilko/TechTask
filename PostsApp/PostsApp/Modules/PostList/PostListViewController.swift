@@ -12,7 +12,7 @@ final class PostListViewController: BaseViewController {
         static let errorAlertTitle = "Error"
     }
     
-    var viewModel: PostListViewModelProtocol?
+    private var viewModel: PostListViewModelProtocol
     
     private lazy var postTableView: PostTableView = {
         let tableView = PostTableView()
@@ -22,6 +22,15 @@ final class PostListViewController: BaseViewController {
         return tableView
     }()
     
+    init(viewModel: PostListViewModelProtocol) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigationBar()
@@ -29,27 +38,27 @@ final class PostListViewController: BaseViewController {
         
         setupViewModelCallbacks()
         
-        viewModel?.startObserving()
+        viewModel.startObserving()
         Task {
-            await viewModel?.loadPosts()
+            await viewModel.loadPosts()
         }
     }
     
     @objc private func onPlusButtonTap() {
-        viewModel?.goToAddPost()
+        viewModel.goToAddPost()
     }
     
     private func setupViewModelCallbacks() {
-        viewModel?.onReceivePosts = { [weak self] posts in
+        viewModel.onReceivePosts = { [weak self] posts in
             self?.postTableView.addItems(posts: posts, animate: true)
         }
         
-        viewModel?.onPostChange = { [weak self] result in
+        viewModel.onPostChange = { [weak self] result in
             guard let self else { return }
             self.postTableView.addItems(posts: result.value, animate: true)
         }
         
-        viewModel?.onReceiveError = { [weak self] error in
+        viewModel.onReceiveError = { [weak self] error in
             self?.showErrorAlert(title: Constants.errorAlertTitle, message: error.localizedDescription)
         }
     }
@@ -71,7 +80,7 @@ final class PostListViewController: BaseViewController {
 
 extension PostListViewController: PostTableViewDelegate {
     func onPostDelete(post: Post) {
-        viewModel?.delete(post: post)
+        viewModel.delete(post: post)
     }
     
     func onPostLongPressed(post: Post) {
@@ -86,7 +95,7 @@ extension PostListViewController: PostTableViewDelegate {
         
         let deleteAction = UIAlertAction(title: Constants.alertDeleteOption,
                                          style: .destructive) { [unowned self] _ in
-            viewModel?.delete(post: post)
+            viewModel.delete(post: post)
         }
         
         let cancelAction = UIAlertAction(title: Constants.alertCancelOption, style: .cancel)

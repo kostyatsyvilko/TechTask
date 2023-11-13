@@ -10,8 +10,7 @@ extension PostListViewController {
         let viewModel = PostListViewModel(postsRepositoryManager: repositoryManager,
                                           postDatabaseObserver: observer,
                                           coordinator: coordinator)
-        let viewController = PostListViewController()
-        viewController.viewModel = viewModel
+        let viewController = PostListViewController(viewModel: viewModel)
         
         return viewController
     }

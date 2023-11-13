@@ -8,8 +8,7 @@ extension AddPostViewController {
         let viewModel = AddPostViewModel(localPostsRepository: localRepository,
                                          coordinator: coordinator)
         
-        let viewController = AddPostViewController()
-        viewController.viewModel = viewModel
+        let viewController = AddPostViewController(viewModel: viewModel)
         
         return viewController
     }
