@@ -89,10 +89,9 @@ final class PostTableView: UIView {
     @objc private func onLongPress(sender: UILongPressGestureRecognizer) {
         if sender.state == .began {
             let touchPoint = sender.location(in: postsTableView)
-            guard let indexPath = postsTableView.indexPathForRow(at: touchPoint) else {
-                return
-            }
-            guard let post = tableViewDataSource.itemIdentifier(for: indexPath) else {
+            guard let indexPath = postsTableView.indexPathForRow(at: touchPoint),
+                  let post = tableViewDataSource.itemIdentifier(for: indexPath)
+            else {
                 return
             }
             
