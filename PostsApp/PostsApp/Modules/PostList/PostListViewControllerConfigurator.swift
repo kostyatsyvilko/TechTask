@@ -1,11 +1,10 @@
 import Foundation
 
-extension PostListViewController {
+enum PostListViewControllerConfigurator {
     static func configure(coordinator: AppCoordinator,
-                          coreDataConfigurator: CoreDataConfiguratorProtocol) -> PostListViewController {
-        let factory = PostInjectionFactory(coreDataConfigurator: coreDataConfigurator)
-        let observer = factory.createPostDatabaseObserver()
-        let repositoryManager = factory.createPostsRepositoryManager()
+                          configurator: CoreDataConfiguratorProtocol) -> PostListViewController {
+        let observer = PostListInjectionFactory.createPostDatabaseObserver(configurator: configurator)
+        let repositoryManager = PostListInjectionFactory.createPostsRepositoryManager(configurator: configurator)
         
         let viewModel = PostListViewModel(postsRepositoryManager: repositoryManager,
                                           postDatabaseObserver: observer,
