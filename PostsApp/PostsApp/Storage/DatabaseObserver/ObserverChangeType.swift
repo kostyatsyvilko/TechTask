@@ -1,8 +1,8 @@
 import Foundation
 
 enum ObserverChangeType: String {
-    case update = "update"
-    case delete = "delete"
-    case insert = "insert"
+    case update
+    case delete
+    case insert
     case unknown
 }
