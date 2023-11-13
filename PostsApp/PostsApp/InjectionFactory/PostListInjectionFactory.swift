@@ -1,7 +1,7 @@
 import Foundation
 
 enum PostListInjectionFactory {
-    static func createPostsRepositoryManager(configurator: CoreDataConfiguratorProtocol) -> PostsRepositoryManagerProtocol {
+    static func createPostsRepositoryManager(configurator: CoreDataConfigurator) -> PostsRepositoryManagerProtocol {
         let dbManager = CoreDataPostManager(coreDataConfigurator: configurator)
         let localRepository = PostsLocalRepository(databaseManager: dbManager)
         
@@ -12,7 +12,7 @@ enum PostListInjectionFactory {
                                       remoteRepository: remoteRepository)
     }
     
-    static func createPostDatabaseObserver(configurator: CoreDataConfiguratorProtocol) -> PostDatabaseObserverProtocol {
+    static func createPostDatabaseObserver(configurator: CoreDataConfigurator) -> PostDatabaseObserverProtocol {
         let observer = CoreDataPostObserverConfigurator(coreDataConfigurator: configurator).configure()
         return PostDatabaseObserver(databaseObserver: observer)
     }

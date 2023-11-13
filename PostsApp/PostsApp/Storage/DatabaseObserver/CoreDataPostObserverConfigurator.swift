@@ -2,9 +2,9 @@ import Foundation
 import CoreData
 
 final class CoreDataPostObserverConfigurator {
-    private let coreDataConfigurator: CoreDataConfiguratorProtocol
+    private let coreDataConfigurator: CoreDataConfigurator
     
-    init(coreDataConfigurator: CoreDataConfiguratorProtocol) {
+    init(coreDataConfigurator: CoreDataConfigurator) {
         self.coreDataConfigurator = coreDataConfigurator
     }
     

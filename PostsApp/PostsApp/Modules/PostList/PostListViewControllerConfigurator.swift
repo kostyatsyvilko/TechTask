@@ -2,7 +2,7 @@ import Foundation
 
 enum PostListViewControllerConfigurator {
     static func configure(coordinator: AppCoordinator,
-                          configurator: CoreDataConfiguratorProtocol) -> PostListViewController {
+                          configurator: CoreDataConfigurator) -> PostListViewController {
         let observer = PostListInjectionFactory.createPostDatabaseObserver(configurator: configurator)
         let repositoryManager = PostListInjectionFactory.createPostsRepositoryManager(configurator: configurator)
         
