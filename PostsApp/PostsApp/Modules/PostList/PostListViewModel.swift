@@ -2,6 +2,7 @@ import Foundation
 
 protocol PostListViewModelProtocol {
     var onReceivePosts: ((_ posts: [Post]) -> Void)? { get set }
+    var onRemotePostsLoadingFinished: (() -> Void)? { get set }
     var onPostChange: ((ObserverChangeResult<[Post]>) -> Void)? { get set }
     var onReceiveError: ((Error) -> Void)? { get set }
     
@@ -21,6 +22,7 @@ final class PostListViewModel: PostListViewModelProtocol {
     private let coordinator: AppCoordinator
     
     var onReceivePosts: ((_ posts: [Post]) -> Void)?
+    var onRemotePostsLoadingFinished: (() -> Void)?
     var onPostChange: ((ObserverChangeResult<[Post]>) -> Void)?
     var onReceiveError: ((Error) -> Void)?
     
@@ -53,6 +55,9 @@ final class PostListViewModel: PostListViewModelProtocol {
         }
         
         await loadRemotePosts()
+        await MainActor.run {
+            onRemotePostsLoadingFinished?()
+        }
     }
     
     func save(post: Post) {

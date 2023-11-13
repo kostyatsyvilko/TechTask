@@ -78,6 +78,10 @@ final class PostListViewController: BaseViewController {
         viewModel.onReceiveError = { [weak self] error in
             self?.showErrorAlert(title: Constants.errorAlertTitle, message: error.localizedDescription)
         }
+        
+        viewModel.onRemotePostsLoadingFinished = { [weak self] in
+            self?.loadingView.stopAnimating()
+        }
     }
     
     private func configureNavigationBar() {
