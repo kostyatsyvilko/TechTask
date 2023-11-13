@@ -1,14 +1,13 @@
 import Foundation
 
 protocol PostListViewModelProtocol {
-    var onReceivePosts: (@MainActor (_ posts: [Post]) -> Void)? { get set }
+    var onReceivePosts: ((_ posts: [Post]) -> Void)? { get set }
     var onPostChange: ((ObserverChangeResult<[Post]>) -> Void)? { get set }
     var onReceiveError: ((Error) -> Void)? { get set }
     
     func startObserving()
     
-    func loadRemotePosts() async
-    func loadLocalPosts() async
+    func loadPosts() async
     func delete(post: Post)
     func save(post: Post)
     
@@ -21,7 +20,7 @@ final class PostListViewModel: PostListViewModelProtocol {
     private var postDatabaseObserver: PostDatabaseObserverProtocol
     private let coordinator: AppCoordinator
     
-    var onReceivePosts: (@MainActor (_ posts: [Post]) -> Void)?
+    var onReceivePosts: ((_ posts: [Post]) -> Void)?
     var onPostChange: ((ObserverChangeResult<[Post]>) -> Void)?
     var onReceiveError: ((Error) -> Void)?
     
@@ -42,24 +41,18 @@ final class PostListViewModel: PostListViewModelProtocol {
         }
     }
     
-    func loadRemotePosts() async {
-        let result = await postsRepositoryManager.loadRemotePosts()
-        switch result {
-        case .success(_):
-            break
-        case .failure(let error):
-            onReceiveError?(error)
-        }
-    }
-    
-    func loadLocalPosts() async {
+    func loadPosts() async {
         let result = postsRepositoryManager.loadLocalPosts()
-        switch result {
-        case .success(let posts):
-            await onReceivePosts?(posts)
-        case .failure(let error):
-            onReceiveError?(error)
+        await MainActor.run {
+            switch result {
+            case .success(let posts):
+                onReceivePosts?(posts)
+            case .failure(let error):
+                onReceiveError?(error)
+            }
         }
+        
+        await loadRemotePosts()
     }
     
     func save(post: Post) {
@@ -75,6 +68,18 @@ final class PostListViewModel: PostListViewModelProtocol {
             try postsRepositoryManager.deleteLocal(post: post)
         } catch let error {
             onReceiveError?(error)
+        }
+    }
+    
+    private func loadRemotePosts() async {
+        let result = await postsRepositoryManager.loadRemotePosts()
+        await MainActor.run {
+            switch result {
+            case .success(_):
+                break
+            case .failure(let error):
+                onReceiveError?(error)
+            }
         }
     }
 }

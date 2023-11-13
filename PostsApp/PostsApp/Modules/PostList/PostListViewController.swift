@@ -31,8 +31,7 @@ final class PostListViewController: BaseViewController {
         
         viewModel?.startObserving()
         Task {
-            await viewModel?.loadLocalPosts()
-            await viewModel?.loadRemotePosts()
+            await viewModel?.loadPosts()
         }
     }
     
