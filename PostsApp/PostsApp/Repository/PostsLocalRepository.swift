@@ -1,7 +1,7 @@
 import Foundation
 
 final class PostsLocalRepository: PostsLocalRepositoryProtocol {
-    private var databaseManager: CoreDataManager
+    private let databaseManager: CoreDataManager
     
     init(databaseManager: CoreDataManager) {
         self.databaseManager = databaseManager

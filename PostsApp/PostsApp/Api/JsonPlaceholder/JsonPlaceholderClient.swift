@@ -2,8 +2,8 @@ import Foundation
 
 class JsonPlaceholderClient: ApiClient {
     
-    private var apiManager: ApiManager
-    private var baseUrlString = ApiConfig.baseUrlString
+    private let apiManager: ApiManager
+    private let baseUrlString = ApiConfig.baseUrlString
     
     init(apiManager: ApiManager) {
         self.apiManager = apiManager

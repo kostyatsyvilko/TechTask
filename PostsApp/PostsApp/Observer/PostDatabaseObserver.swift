@@ -1,7 +1,7 @@
 import Foundation
 
 final class PostDatabaseObserver: PostDatabaseObserverProtocol {
-    private var databaseObserver: CoreDataFetchedResultsObserver<PostManagedObject>
+    private let databaseObserver: CoreDataFetchedResultsObserver<PostManagedObject>
     
     var onChange: ((ObserverChangeResult<[Post]>) -> Void)?
     

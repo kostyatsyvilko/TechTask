@@ -1,8 +1,8 @@
 import Foundation
 
 final class PostsRepositoryManager: PostsRepositoryManagerProtocol {
-    private var localRepository: PostsLocalRepositoryProtocol
-    private var remoteRepository: PostsRemoteRepositoryProtocol
+    private let localRepository: PostsLocalRepositoryProtocol
+    private let remoteRepository: PostsRemoteRepositoryProtocol
     
     init(localRepository: PostsLocalRepositoryProtocol,
          remoteRepository: PostsRemoteRepositoryProtocol) {
