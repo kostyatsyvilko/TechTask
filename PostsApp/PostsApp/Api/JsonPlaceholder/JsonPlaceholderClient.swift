@@ -10,7 +10,7 @@ class JsonPlaceholderClient: ApiClient {
     }
     
     func send<T>(_ request: T) async -> ApiClientResult<T.Response> where T : ApiRequest {
-        guard let url = getUrl(request) else {
+        guard let url = URL(string: baseUrlString + request.resourceName) else {
             return .failure(JsonPlaceholderError.incorrectUrl)
         }
         let result = await apiManager.send(url: url, headers: [:])
@@ -27,9 +27,5 @@ class JsonPlaceholderClient: ApiClient {
         case .failure(let error):
             return .failure(error)
         }
-    }
-    
-    private func getUrl<T: ApiRequest>(_ request: T) -> URL? {
-        return URL(string: baseUrlString + request.resourceName)
     }
 }
