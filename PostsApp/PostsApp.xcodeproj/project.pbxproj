@@ -50,8 +50,8 @@
 		CEB391322B01FA970017DACD /* CoreDataConfiguratorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB391312B01FA970017DACD /* CoreDataConfiguratorProtocol.swift */; };
 		CEB391342B02055B0017DACD /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB391332B02055B0017DACD /* BaseViewController.swift */; };
 		CEB391362B02221F0017DACD /* CoreDataPostManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB391352B02221F0017DACD /* CoreDataPostManager.swift */; };
-		CEB391412B0235BC0017DACD /* JsonPlaceholderClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB3913D2B0235BC0017DACD /* JsonPlaceholderClient.swift */; };
-		CEB391422B0235BC0017DACD /* JsonPlaceholderError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB3913E2B0235BC0017DACD /* JsonPlaceholderError.swift */; };
+		CEB391412B0235BC0017DACD /* PostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB3913D2B0235BC0017DACD /* PostRepository.swift */; };
+		CEB391422B0235BC0017DACD /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB3913E2B0235BC0017DACD /* NetworkError.swift */; };
 		CEB391432B0235BC0017DACD /* PostsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB391402B0235BC0017DACD /* PostsRequest.swift */; };
 		CEB391452B0237340017DACD /* AddPostInjectionFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB391442B0237340017DACD /* AddPostInjectionFactory.swift */; };
 		CEC6FABE2AFD49F60028E529 /* PostDatabaseObserverProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC6FABD2AFD49F60028E529 /* PostDatabaseObserverProtocol.swift */; };
@@ -116,8 +116,8 @@
 		CEB391312B01FA970017DACD /* CoreDataConfiguratorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataConfiguratorProtocol.swift; sourceTree = "<group>"; };
 		CEB391332B02055B0017DACD /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		CEB391352B02221F0017DACD /* CoreDataPostManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataPostManager.swift; sourceTree = "<group>"; };
-		CEB3913D2B0235BC0017DACD /* JsonPlaceholderClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonPlaceholderClient.swift; sourceTree = "<group>"; };
-		CEB3913E2B0235BC0017DACD /* JsonPlaceholderError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonPlaceholderError.swift; sourceTree = "<group>"; };
+		CEB3913D2B0235BC0017DACD /* PostRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostRepository.swift; sourceTree = "<group>"; };
+		CEB3913E2B0235BC0017DACD /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		CEB391402B0235BC0017DACD /* PostsRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsRequest.swift; sourceTree = "<group>"; };
 		CEB391442B0237340017DACD /* AddPostInjectionFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostInjectionFactory.swift; sourceTree = "<group>"; };
 		CEC6FABD2AFD49F60028E529 /* PostDatabaseObserverProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDatabaseObserverProtocol.swift; sourceTree = "<group>"; };
@@ -238,8 +238,9 @@
 			children = (
 				CE5504882AFBA5B20036BE9C /* ApiManager */,
 				CE55048D2AFBA9630036BE9C /* ApiClient */,
-				CEB3913C2B0235BC0017DACD /* JsonPlaceholder */,
+				CEB3913C2B0235BC0017DACD /* ApiRepository */,
 				CE5504922AFBAABE0036BE9C /* Model */,
+				CEB3913E2B0235BC0017DACD /* NetworkError.swift */,
 				CE55049D2AFBAC1A0036BE9C /* ApiConfig.swift */,
 			);
 			path = Api;
@@ -398,14 +399,13 @@
 			path = AddPost;
 			sourceTree = "<group>";
 		};
-		CEB3913C2B0235BC0017DACD /* JsonPlaceholder */ = {
+		CEB3913C2B0235BC0017DACD /* ApiRepository */ = {
 			isa = PBXGroup;
 			children = (
-				CEB3913D2B0235BC0017DACD /* JsonPlaceholderClient.swift */,
-				CEB3913E2B0235BC0017DACD /* JsonPlaceholderError.swift */,
+				CEB3913D2B0235BC0017DACD /* PostRepository.swift */,
 				CEB3913F2B0235BC0017DACD /* Request */,
 			);
-			path = JsonPlaceholder;
+			path = ApiRepository;
 			sourceTree = "<group>";
 		};
 		CEB3913F2B0235BC0017DACD /* Request */ = {
@@ -542,7 +542,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEB391422B0235BC0017DACD /* JsonPlaceholderError.swift in Sources */,
+				CEB391422B0235BC0017DACD /* NetworkError.swift in Sources */,
 				CE56CB432AFCD176008FD671 /* PostTableView.swift in Sources */,
 				CE2FE6922AFD313D00DAF54C /* ObserverChangeResult.swift in Sources */,
 				CE1315F72AFCE992006BD858 /* PostsRepositoryManagerProtocol.swift in Sources */,
@@ -551,7 +551,7 @@
 				CEB391452B0237340017DACD /* AddPostInjectionFactory.swift in Sources */,
 				CEFBB5CF2AFE1F5700FE8BA3 /* Coordinator.swift in Sources */,
 				CEB391322B01FA970017DACD /* CoreDataConfiguratorProtocol.swift in Sources */,
-				CEB391412B0235BC0017DACD /* JsonPlaceholderClient.swift in Sources */,
+				CEB391412B0235BC0017DACD /* PostRepository.swift in Sources */,
 				CE5504B52AFBC89E0036BE9C /* CoreDataConfigurator.swift in Sources */,
 				CEA84F832AFE1E07008053A6 /* AddPostViewController.swift in Sources */,
 				CE1315EF2AFCDD7F006BD858 /* PostsRemoteRepository.swift in Sources */,

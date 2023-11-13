@@ -1,6 +1,6 @@
 import Foundation
 
-class JsonPlaceholderClient: ApiClient {
+class PostRepository: ApiClient {
     
     private let apiManager: ApiManager
     private let baseUrlString = ApiConfig.baseUrlString
