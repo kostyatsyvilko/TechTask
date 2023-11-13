@@ -64,7 +64,7 @@ final class AddPostViewController: UIViewController {
 
         makeConstraints()
         configureNavigationBar()
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
     }
     
     private func configureNavigationBar() {
