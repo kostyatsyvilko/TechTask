@@ -1,7 +1,7 @@
 import Foundation
 
-enum JsonPlaceholderApiClientFactory {
-    static func create() -> ApiClient {
+enum ApiClientFactory {
+    static func createPostRepository() -> ApiClient {
         let apiManager = UrlSessionManager()
         return PostRepository(apiManager: apiManager)
     }

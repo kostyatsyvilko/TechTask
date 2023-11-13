@@ -5,7 +5,7 @@ enum PostListInjectionFactory {
         let dbManager = CoreDataPostManager(coreDataConfigurator: configurator)
         let localRepository = PostsLocalRepository(databaseManager: dbManager)
         
-        let apiClient = JsonPlaceholderApiClientFactory.create()
+        let apiClient = ApiClientFactory.createPostRepository()
         let remoteRepository = PostsRemoteRepository(apiClient: apiClient)
         
         return PostsRepositoryManager(localRepository: localRepository,
