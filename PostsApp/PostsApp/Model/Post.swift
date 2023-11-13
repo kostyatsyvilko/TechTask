@@ -1,8 +1,8 @@
 import Foundation
 
 struct Post: Hashable {
-    var title: String
-    var body: String
+    let title: String
+    let body: String
     
     init(title: String, body: String) {
         self.title = title
