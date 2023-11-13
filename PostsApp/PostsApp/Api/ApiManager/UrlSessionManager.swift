@@ -9,7 +9,8 @@ final class UrlSessionManager: ApiManager {
     }
     
     func send(url: URL, headers: [String : String]) async -> ApiManagerResult {
-        let request = URLRequest(url: url)
+        var request = URLRequest(url: url)
+        request.allHTTPHeaderFields = headers
         do {
             let result = try await session.data(for: request)
             let data = result.0

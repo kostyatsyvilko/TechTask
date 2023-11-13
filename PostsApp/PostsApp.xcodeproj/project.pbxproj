@@ -408,19 +408,11 @@
 		CEA84F812AFE1DCE008053A6 /* AddPost */ = {
 			isa = PBXGroup;
 			children = (
-				CEE42EB42AFE6CA7007DC2F5 /* Subviews */,
 				CEA84F822AFE1E07008053A6 /* AddPostViewController.swift */,
 				CE28ABDE2AFE634000DB7D6E /* AddPostViewController+Configurator.swift */,
 				CE0C398A2AFE5DC500EBA406 /* AddPostViewModel.swift */,
 			);
 			path = AddPost;
-			sourceTree = "<group>";
-		};
-		CEE42EB42AFE6CA7007DC2F5 /* Subviews */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Subviews;
 			sourceTree = "<group>";
 		};
 		CEFBB5CD2AFE1F3E00FE8BA3 /* Coordinator */ = {
