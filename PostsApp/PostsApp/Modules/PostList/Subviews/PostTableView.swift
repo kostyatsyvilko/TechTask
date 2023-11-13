@@ -37,7 +37,7 @@ final class PostTableView: UIView {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.postCellReuseIdentifier) as? PostTableViewCell else {
                 return nil
             }
-            cell.configure(title: model.title, body: model.body)
+            cell.configure(with: model)
             return cell
         }
         

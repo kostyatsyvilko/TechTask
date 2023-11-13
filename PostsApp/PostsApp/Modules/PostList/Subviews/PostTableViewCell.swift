@@ -49,9 +49,9 @@ final class PostTableViewCell: UITableViewCell {
         makeConstraints()
     }
     
-    func configure(title: String, body: String) {
-        titleLabel.text = title
-        bodyLabel.text = body
+    func configure(with post: Post) {
+        titleLabel.text = post.title
+        bodyLabel.text = post.body
     }
     
     private func makeConstraints() {
