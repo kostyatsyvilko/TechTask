@@ -47,14 +47,18 @@ final class PostListViewController: BaseViewController {
         
         loadingView.startAnimating()
         
-        viewModel.startObserving()
-        Task {
-            await viewModel.loadPosts()
-        }
+        onViewDidLoad()
     }
     
     @objc private func onPlusButtonTap() {
         viewModel.goToAddPost()
+    }
+    
+    private func onViewDidLoad() {
+        viewModel.startObserving()
+        Task {
+            await viewModel.loadPosts()
+        }
     }
     
     private func setupViewModelCallbacks() {
