@@ -34,8 +34,12 @@ final class PostListViewModel: PostListViewModelProtocol {
     }
     
     func startObserving() {
-        postDatabaseObserver.onChange = onPostChange
-        postDatabaseObserver.startObserving()
+        do {
+            postDatabaseObserver.onChange = onPostChange
+            try postDatabaseObserver.startObserving()
+        } catch let error {
+            onReceiveError?(error)
+        }
     }
     
     func loadRemotePosts() async {

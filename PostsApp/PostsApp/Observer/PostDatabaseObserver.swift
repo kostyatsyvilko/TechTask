@@ -9,8 +9,8 @@ final class PostDatabaseObserver: PostDatabaseObserverProtocol {
         self.databaseObserver = databaseObserver
     }
     
-    func startObserving() {
-        databaseObserver.startObserving()
+    func startObserving() throws {
+        try databaseObserver.startObserving()
         databaseObserver.onChange = onDbObserverChange(result:)
     }
     
