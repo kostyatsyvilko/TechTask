@@ -3,10 +3,10 @@ import UIKit
 
 final class AppCoordinator: Coordinator {
     var navigationController: UINavigationController
-    let coreDataConfigurator: CoreDataConfigurator
+    let coreDataConfigurator: CoreDataConfiguratorProtocol
     
     init(navigationController: UINavigationController,
-         coreDataConfigurator: CoreDataConfigurator) {
+         coreDataConfigurator: CoreDataConfiguratorProtocol) {
         self.navigationController = navigationController
         self.coreDataConfigurator = coreDataConfigurator
     }

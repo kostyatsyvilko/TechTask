@@ -3,7 +3,7 @@ import UIKit
 import CoreData
 
 final class CoreDataManager {
-    private let coreDataConfigurator: CoreDataConfigurator
+    private let coreDataConfigurator: CoreDataConfiguratorProtocol
     
     var mainContext: NSManagedObjectContext {
         coreDataConfigurator.managedObject
@@ -15,7 +15,7 @@ final class CoreDataManager {
         return context
     }()
     
-    init(coreDataConfigurator: CoreDataConfigurator) {
+    init(coreDataConfigurator: CoreDataConfiguratorProtocol) {
         self.coreDataConfigurator = coreDataConfigurator
     }
 }

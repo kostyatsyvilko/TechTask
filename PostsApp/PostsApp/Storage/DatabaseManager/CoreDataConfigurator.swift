@@ -1,8 +1,7 @@
 import Foundation
 import CoreData
 
-// TODO: add protocol to this
-final class CoreDataConfigurator {
+final class CoreDataConfigurator: CoreDataConfiguratorProtocol {
     private let dataModelName: String
     
     private(set) lazy var persistentContainer: NSPersistentContainer = {

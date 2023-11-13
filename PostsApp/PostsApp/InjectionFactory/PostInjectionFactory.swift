@@ -2,9 +2,9 @@ import Foundation
 
 final class PostInjectionFactory {
     
-    let coreDataConfigurator: CoreDataConfigurator
+    let coreDataConfigurator: CoreDataConfiguratorProtocol
     
-    init(coreDataConfigurator: CoreDataConfigurator) {
+    init(coreDataConfigurator: CoreDataConfiguratorProtocol) {
         self.coreDataConfigurator = coreDataConfigurator
     }
     

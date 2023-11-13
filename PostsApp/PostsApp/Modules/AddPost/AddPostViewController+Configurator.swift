@@ -2,7 +2,7 @@ import Foundation
 
 extension AddPostViewController {
     static func configure(coordinator: AppCoordinator,
-                          coreDataConfigurator: CoreDataConfigurator) -> AddPostViewController {
+                          coreDataConfigurator: CoreDataConfiguratorProtocol) -> AddPostViewController {
         let factory = PostInjectionFactory(coreDataConfigurator: coreDataConfigurator)
         let localRepository = factory.createPostsLocalRepository()
         let viewModel = AddPostViewModel(localPostsRepository: localRepository,
