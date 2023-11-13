@@ -11,7 +11,7 @@ final class AddPostViewController: BaseViewController {
         static let textContainerLineFragmentPadding: CGFloat = 0
         static let stackSpacing: CGFloat = 10
         static let navigationTitle = "Add new post"
-        static let addButtonName = "plus"
+        static let addButtonTitle = "Done"
         static let errorAlertTitle = "Error"
         static let yesAlertOption = "Yes"
         static let noAlertOption = "No"
@@ -78,8 +78,8 @@ final class AddPostViewController: BaseViewController {
     
     private func configureNavigationBar() {
         self.title = Constants.navigationTitle
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: Constants.addButtonName),
-                                                                 style: .plain,
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: Constants.addButtonTitle,
+                                                                 style: .done,
                                                                  target: self,
                                                                  action: #selector(onAddButtonTap))
         
