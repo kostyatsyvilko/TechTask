@@ -8,8 +8,8 @@ protocol PostTableViewDelegate: AnyObject {
 final class PostTableView: UIView {
     
     private enum Constants {
-        static var postCellReuseIdentifier = "postCell"
-        static var deleteIconName = "trash"
+        static let postCellReuseIdentifier = "postCell"
+        static let deleteIconName = "trash"
     }
     
     private enum PostsTableViewSection: Hashable {

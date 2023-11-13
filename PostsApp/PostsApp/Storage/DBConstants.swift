@@ -1,5 +1,5 @@
 import Foundation
 
 enum DBConstants {
-    static var coreDataModelName = "PostsModel"
+    static let coreDataModelName = "PostsModel"
 }
