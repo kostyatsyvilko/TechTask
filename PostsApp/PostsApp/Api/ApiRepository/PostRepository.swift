@@ -1,17 +1,17 @@
 import Foundation
 
-class JsonPlaceholderClient: ApiClient {
+class PostRepository: ApiClient {
     
-    private var apiManager: ApiManager
-    private var baseUrlString = ApiConfig.baseUrlString
+    private let apiManager: ApiManager
+    private let baseUrlString = ApiConfig.baseUrlString
     
     init(apiManager: ApiManager) {
         self.apiManager = apiManager
     }
     
     func send<T>(_ request: T) async -> ApiClientResult<T.Response> where T : ApiRequest {
-        guard let url = getUrl(request) else {
-            return .failure(JsonPlaceholderError.incorrectUrl)
+        guard let url = URL(string: baseUrlString + request.resourceName) else {
+            return .failure(ApiError.incorrectUrl)
         }
         let result = await apiManager.send(url: url, headers: [:])
         
@@ -22,14 +22,10 @@ class JsonPlaceholderClient: ApiClient {
             if let model = model {
                 return .success(model)
             } else {
-                return .failure(JsonPlaceholderError.decoding)
+                return .failure(ApiError.decoding)
             }
         case .failure(let error):
             return .failure(error)
         }
-    }
-    
-    private func getUrl<T: ApiRequest>(_ request: T) -> URL? {
-        return URL(string: baseUrlString + request.resourceName)
     }
 }

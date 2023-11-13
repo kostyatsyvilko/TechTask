@@ -1,8 +1,8 @@
 import Foundation
 
-struct CoreDataConfiguratorFactory {
-    static func create() -> CoreDataConfigurator {
+enum CoreDataConfiguratorFactory {
+    static func create() -> CoreDataConfigurable {
         let dbModel = DBConstants.coreDataModelName
-        return CoreDataConfigurator(dataModelName: dbModel)
+        return SqlCoreDataConfigurator(dataModelName: dbModel)
     }
 }

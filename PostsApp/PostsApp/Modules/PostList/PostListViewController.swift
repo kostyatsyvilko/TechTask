@@ -1,17 +1,18 @@
 import UIKit
 import SnapKit
 
-final class PostListViewController: UIViewController {
+final class PostListViewController: BaseViewController {
     
     private enum Constants {
-        static var navigationTitle = "Posts"
-        static var addButtonName = "plus"
-        static var alertTitle = "Are you sure you want to delete?"
-        static var alertDeleteOption = "Yes"
-        static var alertCancelOption = "No"
+        static let navigationTitle = "Posts"
+        static let addButtonName = "plus"
+        static let alertTitle = "Are you sure you want to delete?"
+        static let alertDeleteOption = "Yes"
+        static let alertCancelOption = "No"
+        static let errorAlertTitle = "Error"
     }
     
-    var viewModel: PostListViewModelProtocol?
+    private var viewModel: PostListViewModelProtocol
     
     private lazy var postTableView: PostTableView = {
         let tableView = PostTableView()
@@ -21,6 +22,22 @@ final class PostListViewController: UIViewController {
         return tableView
     }()
     
+    private lazy var loadingView: UIActivityIndicatorView = {
+        let view = UIActivityIndicatorView(style: .medium)
+        
+        self.view.addSubview(view)
+        return view
+    }()
+    
+    init(viewModel: PostListViewModelProtocol) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigationBar()
@@ -28,25 +45,42 @@ final class PostListViewController: UIViewController {
         
         setupViewModelCallbacks()
         
-        viewModel?.startObserving()
-        Task {
-            await viewModel?.loadLocalPosts()
-            await viewModel?.loadRemotePosts()
-        }
+        loadingView.startAnimating()
+        
+        onViewDidLoad()
     }
     
     @objc private func onPlusButtonTap() {
-        viewModel?.goToAddPost()
+        viewModel.goToAddPost()
+    }
+    
+    private func onViewDidLoad() {
+        viewModel.startObserving()
+        Task {
+            await viewModel.loadPosts()
+        }
     }
     
     private func setupViewModelCallbacks() {
-        viewModel?.onReceivePosts = { [weak self] posts in
+        viewModel.onReceivePosts = { [weak self] posts in
+            if posts.count > 0 {
+                self?.loadingView.stopAnimating()
+            }
             self?.postTableView.addItems(posts: posts, animate: true)
         }
         
-        viewModel?.onPostChange = { [weak self] result in
+        viewModel.onPostChange = { [weak self] result in
             guard let self else { return }
+            loadingView.stopAnimating()
             self.postTableView.addItems(posts: result.value, animate: true)
+        }
+        
+        viewModel.onReceiveError = { [weak self] error in
+            self?.showErrorAlert(title: Constants.errorAlertTitle, message: error.localizedDescription)
+        }
+        
+        viewModel.onRemotePostsLoadingFinished = { [weak self] in
+            self?.loadingView.stopAnimating()
         }
     }
     
@@ -62,12 +96,16 @@ final class PostListViewController: UIViewController {
         postTableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        
+        loadingView.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
     }
 }
 
 extension PostListViewController: PostTableViewDelegate {
     func onPostDelete(post: Post) {
-        viewModel?.delete(post: post)
+        viewModel.delete(post: post)
     }
     
     func onPostLongPressed(post: Post) {
@@ -82,7 +120,7 @@ extension PostListViewController: PostTableViewDelegate {
         
         let deleteAction = UIAlertAction(title: Constants.alertDeleteOption,
                                          style: .destructive) { [unowned self] _ in
-            viewModel?.delete(post: post)
+            viewModel.delete(post: post)
         }
         
         let cancelAction = UIAlertAction(title: Constants.alertCancelOption, style: .cancel)

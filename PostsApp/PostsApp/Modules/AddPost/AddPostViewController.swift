@@ -1,7 +1,7 @@
 import UIKit
 import SnapKit
 
-final class AddPostViewController: UIViewController {
+final class AddPostViewController: BaseViewController {
     
     private enum Constants {
         static let textFieldPlaceholder = "Enter title"
@@ -11,17 +11,15 @@ final class AddPostViewController: UIViewController {
         static let textContainerLineFragmentPadding: CGFloat = 0
         static let stackSpacing: CGFloat = 10
         static let navigationTitle = "Add new post"
-        static let addButtonName = "plus"
+        static let addButtonTitle = "Done"
         static let errorAlertTitle = "Error"
-        static let okAlerOption = "Ok"
         static let yesAlertOption = "Yes"
         static let noAlertOption = "No"
         static let goBackWarningMessage = "You are trying to navigate back, but you entered some data and you will lost it. Are you sure you want to continue?"
         static let contentInsets = UIEdgeInsets(top: 10, left: 20, bottom: 20, right: 20)
-        
     }
     
-    var viewModel: AddPostViewModel?
+    private var viewModel: AddPostViewModelProtocol
     
     private var isTextBodyNotEmpty: Bool {
         !(titleTextField.text ?? "").isEmpty && !bodyTextView.text.isEmpty
@@ -59,18 +57,29 @@ final class AddPostViewController: UIViewController {
         return stackView
     }()
     
+    init(viewModel: AddPostViewModelProtocol) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         makeConstraints()
         configureNavigationBar()
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
+        
+        setupViewModelCallbacks()
     }
     
     private func configureNavigationBar() {
         self.title = Constants.navigationTitle
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: Constants.addButtonName),
-                                                                 style: .plain,
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: Constants.addButtonTitle,
+                                                                 style: .done,
                                                                  target: self,
                                                                  action: #selector(onAddButtonTap))
         
@@ -84,18 +93,27 @@ final class AddPostViewController: UIViewController {
     @objc private func onAddButtonTap() {
         view.endEditing(true)
         let post = Post(title: titleTextField.text ?? "", body: bodyTextView.text)
-        do {
-            try viewModel?.save(post: post)
-            viewModel?.goBack()
-        } catch AddPostViewModelError.postExists(let message) {
-            showErrorAlert(message: message)
-        } catch let error {
-            showErrorAlert(message: error.localizedDescription)
-        }
+        viewModel.save(post: post)
     }
     
     @objc private func onBackButtonTap() {
-        showGoBackWarningAlert()
+        let isTextFieldEmpty = titleTextField.text?.isEmpty ?? true
+        if (isTextBodyNotEmpty && bodyTextView.text != Constants.defaultTextViewText) ||
+            (!isTextFieldEmpty && bodyTextView.text == Constants.defaultTextViewText) {
+            showGoBackWarningAlert()
+        } else {
+            viewModel.goBack()
+        }
+    }
+    
+    private func setupViewModelCallbacks() {
+        viewModel.onReceiveError = { [weak self] error in
+            self?.showErrorAlert(title: Constants.errorAlertTitle, message: error.localizedDescription)
+        }
+        
+        viewModel.onSaveSuccess = { [weak self] in
+            self?.viewModel.goBack()
+        }
     }
     
     private func makeConstraints() {
@@ -106,19 +124,6 @@ final class AddPostViewController: UIViewController {
 }
 
 extension AddPostViewController {
-    private func showErrorAlert(message: String) {
-        let actionSheet = UIAlertController(
-            title: Constants.errorAlertTitle,
-            message: message,
-            preferredStyle: .alert)
-        
-        let okAction = UIAlertAction(title: Constants.okAlerOption, style: .default)
-    
-        actionSheet.addAction(okAction)
-        
-        present(actionSheet, animated: true)
-    }
-    
     private func showGoBackWarningAlert() {
         let actionSheet = UIAlertController(
             title: Constants.errorAlertTitle,
@@ -127,7 +132,7 @@ extension AddPostViewController {
         
         let yesAction = UIAlertAction(title: Constants.yesAlertOption,
                                       style: .cancel) { [unowned self] _ in
-            self.viewModel?.goBack()
+            self.viewModel.goBack()
         }
     
         let noAction = UIAlertAction(title: Constants.noAlertOption, style: .default)

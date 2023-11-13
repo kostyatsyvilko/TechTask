@@ -1,8 +1,7 @@
 import Foundation
 import CoreData
 
-final class CoreDataFetchedResultsObserver<T: NSManagedObject>: NSObject,
-                                                                    NSFetchedResultsControllerDelegate {
+final class CoreDataFetchedResultsObserver<T: NSManagedObject>: NSObject, NSFetchedResultsControllerDelegate {
     var onChange: ((ObserverChangeResult<[T]>) -> Void)?
     
     private let resultsController: NSFetchedResultsController<T>
@@ -19,10 +18,8 @@ final class CoreDataFetchedResultsObserver<T: NSManagedObject>: NSObject,
         resultsController.delegate = self
     }
     
-    func startObserving() {
-        do {
-            try resultsController.performFetch()
-        } catch {}
+    func startObserving() throws {
+        try resultsController.performFetch()
     }
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
@@ -31,11 +28,10 @@ final class CoreDataFetchedResultsObserver<T: NSManagedObject>: NSObject,
         }
 
         sections.forEach { info in
-            if let objects = info.objects?.compactMap({ $0 as? T }) {
-                let type = ObserverChangeType(rawValue: info.name) ?? .unknown
-                let changeResult = ObserverChangeResult(type: type, value: objects)
-                onChange?(changeResult)
-            }
+            guard let objects = info.objects?.compactMap({ $0 as? T }) else { return }
+            let type = ObserverChangeType(rawValue: info.name) ?? .unknown
+            let changeResult = ObserverChangeResult(type: type, value: objects)
+            onChange?(changeResult)
         }
     }
 }

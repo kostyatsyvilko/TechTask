@@ -1,7 +1,7 @@
 import Foundation
 
-final class PostsRemoteRepository: PostsRemoteRepositoryProtocol {
-    private var apiClient: ApiClient
+final class PostRemoteRepository: PostRemoteRepositoryProtocol {
+    private let apiClient: ApiClient
     
     init(apiClient: ApiClient) {
         self.apiClient = apiClient

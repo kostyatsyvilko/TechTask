@@ -1,6 +1,6 @@
 import Foundation
 
 struct PostResponse: Codable {
-    var title: String
-    var body: String
+    let title: String
+    let body: String
 }

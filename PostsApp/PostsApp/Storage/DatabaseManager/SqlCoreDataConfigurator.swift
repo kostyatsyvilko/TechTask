@@ -1,8 +1,7 @@
 import Foundation
 import CoreData
 
-// TODO: add protocol to this
-final class CoreDataConfigurator {
+final class SqlCoreDataConfigurator: CoreDataConfigurable {
     private let dataModelName: String
     
     private(set) lazy var persistentContainer: NSPersistentContainer = {
@@ -16,7 +15,7 @@ final class CoreDataConfigurator {
         return container
     }()
     
-    private(set) lazy var managedObject: NSManagedObjectContext = {
+    private(set) lazy var managedObjectContext: NSManagedObjectContext = {
         return persistentContainer.viewContext
     }()
     

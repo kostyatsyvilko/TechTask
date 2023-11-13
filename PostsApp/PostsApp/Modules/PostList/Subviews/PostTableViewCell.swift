@@ -4,11 +4,11 @@ import SnapKit
 final class PostTableViewCell: UITableViewCell {
     
     private enum Constants {
-        static var contentStackSpacing: CGFloat = 10
-        static var contentStackInsets: CGFloat = 10
-        static var textNumberOfLines = 0
-        static var titleFont: UIFont = .systemFont(ofSize: 18, weight: .bold)
-        static var bodyFont: UIFont = .systemFont(ofSize: 14)
+        static let contentStackSpacing: CGFloat = 10
+        static let contentStackInsets: CGFloat = 10
+        static let textNumberOfLines = 0
+        static let titleFont: UIFont = .systemFont(ofSize: 18, weight: .bold)
+        static let bodyFont: UIFont = .systemFont(ofSize: 14)
     }
     
     private lazy var titleLabel: UILabel = {
@@ -49,9 +49,9 @@ final class PostTableViewCell: UITableViewCell {
         makeConstraints()
     }
     
-    func configure(title: String, body: String) {
-        titleLabel.text = title
-        bodyLabel.text = body
+    func configure(with post: Post) {
+        titleLabel.text = post.title
+        bodyLabel.text = post.body
     }
     
     private func makeConstraints() {

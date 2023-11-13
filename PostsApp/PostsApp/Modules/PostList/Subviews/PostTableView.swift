@@ -8,8 +8,8 @@ protocol PostTableViewDelegate: AnyObject {
 final class PostTableView: UIView {
     
     private enum Constants {
-        static var postCellReuseIdentifier = "postCell"
-        static var deleteIconName = "trash"
+        static let postCellReuseIdentifier = "postCell"
+        static let deleteIconName = "trash"
     }
     
     private enum PostsTableViewSection: Hashable {
@@ -35,9 +35,9 @@ final class PostTableView: UIView {
     private lazy var tableViewDataSource: UITableViewDiffableDataSource<PostsTableViewSection, Post> = {
         let dataSource = UITableViewDiffableDataSource<PostsTableViewSection, Post>(tableView: postsTableView) { tableView, _, model in
             guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.postCellReuseIdentifier) as? PostTableViewCell else {
-                return UITableViewCell()
+                return nil
             }
-            cell.configure(title: model.title, body: model.body)
+            cell.configure(with: model)
             return cell
         }
         
@@ -89,10 +89,9 @@ final class PostTableView: UIView {
     @objc private func onLongPress(sender: UILongPressGestureRecognizer) {
         if sender.state == .began {
             let touchPoint = sender.location(in: postsTableView)
-            guard let indexPath = postsTableView.indexPathForRow(at: touchPoint) else {
-                return
-            }
-            guard let post = tableViewDataSource.itemIdentifier(for: indexPath) else {
+            guard let indexPath = postsTableView.indexPathForRow(at: touchPoint),
+                  let post = tableViewDataSource.itemIdentifier(for: indexPath)
+            else {
                 return
             }
             
@@ -115,6 +114,10 @@ extension PostTableView: UITableViewDelegate {
         deleteAction.image = UIImage(systemName: Constants.deleteIconName)
         
         return UISwipeActionsConfiguration(actions: [deleteAction])
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 

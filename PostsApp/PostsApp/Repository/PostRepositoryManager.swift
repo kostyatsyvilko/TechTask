@@ -1,11 +1,11 @@
 import Foundation
 
-final class PostsRepositoryManager: PostsRepositoryManagerProtocol {
-    private var localRepository: PostsLocalRepositoryProtocol
-    private var remoteRepository: PostsRemoteRepositoryProtocol
+final class PostRepositoryManager: PostRepositoryManagerProtocol {
+    private let localRepository: PostLocalRepositoryProtocol
+    private let remoteRepository: PostRemoteRepositoryProtocol
     
-    init(localRepository: PostsLocalRepositoryProtocol,
-         remoteRepository: PostsRemoteRepositoryProtocol) {
+    init(localRepository: PostLocalRepositoryProtocol,
+         remoteRepository: PostRemoteRepositoryProtocol) {
         self.localRepository = localRepository
         self.remoteRepository = remoteRepository
     }
@@ -25,11 +25,11 @@ final class PostsRepositoryManager: PostsRepositoryManagerProtocol {
         localRepository.loadPosts()
     }
     
-    func saveLocal(post: Post) {
-        localRepository.save(post: post)
+    func saveLocal(post: Post) throws {
+        try localRepository.save(post: post)
     }
     
-    func deleteLocal(post: Post) {
-        localRepository.delete(post: post)
+    func deleteLocal(post: Post) throws {
+        try localRepository.delete(post: post)
     }
 }
