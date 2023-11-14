@@ -29,7 +29,7 @@ final class PostLocalRepositoryTests: XCTestCase {
             let isContains = posts.contains { $0.title == "Title1" }
             XCTAssertTrue(isContains)
         case .failure(_):
-            break
+            XCTFail()
         }
     }
     
@@ -49,7 +49,7 @@ final class PostLocalRepositoryTests: XCTestCase {
             let isContains = posts.contains { $0.title == titleToDelete }
             XCTAssertFalse(isContains)
         case .failure(_):
-            break
+            XCTFail()
         }
     }
     
