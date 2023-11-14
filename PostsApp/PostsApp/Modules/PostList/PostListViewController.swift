@@ -109,10 +109,10 @@ extension PostListViewController: PostTableViewDelegate {
     }
     
     func onPostLongPressed(post: Post) {
-        showDeleteAler(for: post)
+        showDeleteAlert(for: post)
     }
     
-    private func showDeleteAler(for post: Post) {
+    private func showDeleteAlert(for post: Post) {
         let actionSheet = UIAlertController(
             title: Constants.alertTitle,
             message: nil,
