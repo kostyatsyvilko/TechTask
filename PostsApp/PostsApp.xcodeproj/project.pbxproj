@@ -25,7 +25,6 @@
 		CE5504572AFB87290036BE9C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5504562AFB87290036BE9C /* SceneDelegate.swift */; };
 		CE55045E2AFB872A0036BE9C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE55045D2AFB872A0036BE9C /* Assets.xcassets */; };
 		CE5504612AFB872A0036BE9C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE55045F2AFB872A0036BE9C /* LaunchScreen.storyboard */; };
-		CE55046C2AFB872B0036BE9C /* PostsAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE55046B2AFB872B0036BE9C /* PostsAppTests.swift */; };
 		CE55048F2AFBAA100036BE9C /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE55048E2AFBAA100036BE9C /* ApiClient.swift */; };
 		CE5504912AFBAA220036BE9C /* ApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5504902AFBAA220036BE9C /* ApiRequest.swift */; };
 		CE55049E2AFBAC1A0036BE9C /* ApiConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE55049D2AFBAC1A0036BE9C /* ApiConfig.swift */; };
@@ -54,6 +53,22 @@
 		CEB391422B0235BC0017DACD /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB3913E2B0235BC0017DACD /* ApiError.swift */; };
 		CEB391432B0235BC0017DACD /* PostsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB391402B0235BC0017DACD /* PostsRequest.swift */; };
 		CEB391452B0237340017DACD /* AddPostInjectionFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB391442B0237340017DACD /* AddPostInjectionFactory.swift */; };
+		CEB391542B02A4060017DACD /* CoreDataPostManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB391532B02A4060017DACD /* CoreDataPostManagerTests.swift */; };
+		CEB391562B02A4290017DACD /* CoreDataConfigurationMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB391552B02A4290017DACD /* CoreDataConfigurationMock.swift */; };
+		CEB3915D2B0355D40017DACD /* PostRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB3915C2B0355D40017DACD /* PostRepositoryTests.swift */; };
+		CEB391602B035C540017DACD /* PostLocalRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB3915F2B035C540017DACD /* PostLocalRepositoryTests.swift */; };
+		CEB391622B0362E30017DACD /* ApiManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB391612B0362E30017DACD /* ApiManagerMock.swift */; };
+		CEB391642B03630B0017DACD /* ApiRequestMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB391632B03630B0017DACD /* ApiRequestMock.swift */; };
+		CEB391662B0363770017DACD /* CoreDataPostManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB391652B0363770017DACD /* CoreDataPostManagerMock.swift */; };
+		CEB391692B03657D0017DACD /* PostRemoteRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB391682B03657D0017DACD /* PostRemoteRepositoryTests.swift */; };
+		CEB3916B2B0365F60017DACD /* PostRepositoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB3916A2B0365F60017DACD /* PostRepositoryMock.swift */; };
+		CEB3916E2B036D730017DACD /* PostRepositoryManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB3916D2B036D730017DACD /* PostRepositoryManagerTests.swift */; };
+		CEB391702B036DE10017DACD /* PostRemoteRepositoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB3916F2B036DE10017DACD /* PostRemoteRepositoryMock.swift */; };
+		CEB391722B036EA00017DACD /* PostLocalRepositoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB391712B036EA00017DACD /* PostLocalRepositoryMock.swift */; };
+		CEB391762B0377230017DACD /* PostListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB391752B0377230017DACD /* PostListViewModelTests.swift */; };
+		CEB391782B0377CB0017DACD /* PostRepositoryManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB391772B0377CB0017DACD /* PostRepositoryManagerMock.swift */; };
+		CEB3917A2B0378B10017DACD /* PostDatabaseObserverMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB391792B0378B10017DACD /* PostDatabaseObserverMock.swift */; };
+		CEB3917C2B0380420017DACD /* AddPostViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB3917B2B0380420017DACD /* AddPostViewModelTests.swift */; };
 		CEC6FABE2AFD49F60028E529 /* PostDatabaseObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC6FABD2AFD49F60028E529 /* PostDatabaseObserver.swift */; };
 		CEFBB5CF2AFE1F5700FE8BA3 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFBB5CE2AFE1F5700FE8BA3 /* Coordinator.swift */; };
 		CEFBB5D12AFE202100FE8BA3 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFBB5D02AFE202100FE8BA3 /* AppCoordinator.swift */; };
@@ -92,7 +107,6 @@
 		CE5504602AFB872A0036BE9C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE5504622AFB872A0036BE9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE5504672AFB872B0036BE9C /* PostsAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PostsAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE55046B2AFB872B0036BE9C /* PostsAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsAppTests.swift; sourceTree = "<group>"; };
 		CE55048E2AFBAA100036BE9C /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		CE5504902AFBAA220036BE9C /* ApiRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequest.swift; sourceTree = "<group>"; };
 		CE55049D2AFBAC1A0036BE9C /* ApiConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConfig.swift; sourceTree = "<group>"; };
@@ -120,6 +134,22 @@
 		CEB3913E2B0235BC0017DACD /* ApiError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
 		CEB391402B0235BC0017DACD /* PostsRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsRequest.swift; sourceTree = "<group>"; };
 		CEB391442B0237340017DACD /* AddPostInjectionFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostInjectionFactory.swift; sourceTree = "<group>"; };
+		CEB391532B02A4060017DACD /* CoreDataPostManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataPostManagerTests.swift; sourceTree = "<group>"; };
+		CEB391552B02A4290017DACD /* CoreDataConfigurationMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataConfigurationMock.swift; sourceTree = "<group>"; };
+		CEB3915C2B0355D40017DACD /* PostRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRepositoryTests.swift; sourceTree = "<group>"; };
+		CEB3915F2B035C540017DACD /* PostLocalRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostLocalRepositoryTests.swift; sourceTree = "<group>"; };
+		CEB391612B0362E30017DACD /* ApiManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManagerMock.swift; sourceTree = "<group>"; };
+		CEB391632B03630B0017DACD /* ApiRequestMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequestMock.swift; sourceTree = "<group>"; };
+		CEB391652B0363770017DACD /* CoreDataPostManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataPostManagerMock.swift; sourceTree = "<group>"; };
+		CEB391682B03657D0017DACD /* PostRemoteRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRemoteRepositoryTests.swift; sourceTree = "<group>"; };
+		CEB3916A2B0365F60017DACD /* PostRepositoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRepositoryMock.swift; sourceTree = "<group>"; };
+		CEB3916D2B036D730017DACD /* PostRepositoryManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRepositoryManagerTests.swift; sourceTree = "<group>"; };
+		CEB3916F2B036DE10017DACD /* PostRemoteRepositoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRemoteRepositoryMock.swift; sourceTree = "<group>"; };
+		CEB391712B036EA00017DACD /* PostLocalRepositoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostLocalRepositoryMock.swift; sourceTree = "<group>"; };
+		CEB391752B0377230017DACD /* PostListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListViewModelTests.swift; sourceTree = "<group>"; };
+		CEB391772B0377CB0017DACD /* PostRepositoryManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRepositoryManagerMock.swift; sourceTree = "<group>"; };
+		CEB391792B0378B10017DACD /* PostDatabaseObserverMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDatabaseObserverMock.swift; sourceTree = "<group>"; };
+		CEB3917B2B0380420017DACD /* AddPostViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostViewModelTests.swift; sourceTree = "<group>"; };
 		CEC6FABD2AFD49F60028E529 /* PostDatabaseObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDatabaseObserver.swift; sourceTree = "<group>"; };
 		CEFBB5CE2AFE1F5700FE8BA3 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		CEFBB5D02AFE202100FE8BA3 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
@@ -202,7 +232,11 @@
 		CE55046A2AFB872B0036BE9C /* PostsAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				CE55046B2AFB872B0036BE9C /* PostsAppTests.swift */,
+				CEB391522B02A3F00017DACD /* Mock */,
+				CEB391572B02A8520017DACD /* Api */,
+				CEB391512B02A3EB0017DACD /* Repository */,
+				CEB391742B0376F50017DACD /* ViewModels */,
+				CEB391502B02A3DF0017DACD /* Storage */,
 			);
 			path = PostsAppTests;
 			sourceTree = "<group>";
@@ -415,6 +449,97 @@
 			path = Request;
 			sourceTree = "<group>";
 		};
+		CEB391502B02A3DF0017DACD /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				CEB391732B0376D00017DACD /* DatabaseManager */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		CEB391512B02A3EB0017DACD /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				CEB3916C2B036D510017DACD /* PostRepositoryManager */,
+				CEB391672B0365580017DACD /* PostRemoteRepository */,
+				CEB3915E2B035C150017DACD /* PostLocalRepository */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		CEB391522B02A3F00017DACD /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				CEB391552B02A4290017DACD /* CoreDataConfigurationMock.swift */,
+				CEB391612B0362E30017DACD /* ApiManagerMock.swift */,
+				CEB391632B03630B0017DACD /* ApiRequestMock.swift */,
+				CEB391652B0363770017DACD /* CoreDataPostManagerMock.swift */,
+				CEB3916A2B0365F60017DACD /* PostRepositoryMock.swift */,
+				CEB3916F2B036DE10017DACD /* PostRemoteRepositoryMock.swift */,
+				CEB391712B036EA00017DACD /* PostLocalRepositoryMock.swift */,
+				CEB391772B0377CB0017DACD /* PostRepositoryManagerMock.swift */,
+				CEB391792B0378B10017DACD /* PostDatabaseObserverMock.swift */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
+		CEB391572B02A8520017DACD /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				CEB3915B2B03557D0017DACD /* ApiRepository */,
+			);
+			path = Api;
+			sourceTree = "<group>";
+		};
+		CEB3915B2B03557D0017DACD /* ApiRepository */ = {
+			isa = PBXGroup;
+			children = (
+				CEB3915C2B0355D40017DACD /* PostRepositoryTests.swift */,
+			);
+			path = ApiRepository;
+			sourceTree = "<group>";
+		};
+		CEB3915E2B035C150017DACD /* PostLocalRepository */ = {
+			isa = PBXGroup;
+			children = (
+				CEB3915F2B035C540017DACD /* PostLocalRepositoryTests.swift */,
+			);
+			path = PostLocalRepository;
+			sourceTree = "<group>";
+		};
+		CEB391672B0365580017DACD /* PostRemoteRepository */ = {
+			isa = PBXGroup;
+			children = (
+				CEB391682B03657D0017DACD /* PostRemoteRepositoryTests.swift */,
+			);
+			path = PostRemoteRepository;
+			sourceTree = "<group>";
+		};
+		CEB3916C2B036D510017DACD /* PostRepositoryManager */ = {
+			isa = PBXGroup;
+			children = (
+				CEB3916D2B036D730017DACD /* PostRepositoryManagerTests.swift */,
+			);
+			path = PostRepositoryManager;
+			sourceTree = "<group>";
+		};
+		CEB391732B0376D00017DACD /* DatabaseManager */ = {
+			isa = PBXGroup;
+			children = (
+				CEB391532B02A4060017DACD /* CoreDataPostManagerTests.swift */,
+			);
+			path = DatabaseManager;
+			sourceTree = "<group>";
+		};
+		CEB391742B0376F50017DACD /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				CEB391752B0377230017DACD /* PostListViewModelTests.swift */,
+				CEB3917B2B0380420017DACD /* AddPostViewModelTests.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		CEFBB5CD2AFE1F3E00FE8BA3 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
@@ -492,6 +617,7 @@
 					};
 					CE5504662AFB872B0036BE9C = {
 						CreatedOnToolsVersion = 14.3.1;
+						LastSwiftMigration = 1430;
 						TestTargetID = CE5504502AFB87290036BE9C;
 					};
 				};
@@ -596,7 +722,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE55046C2AFB872B0036BE9C /* PostsAppTests.swift in Sources */,
+				CEB3915D2B0355D40017DACD /* PostRepositoryTests.swift in Sources */,
+				CEB391662B0363770017DACD /* CoreDataPostManagerMock.swift in Sources */,
+				CEB3916E2B036D730017DACD /* PostRepositoryManagerTests.swift in Sources */,
+				CEB3917A2B0378B10017DACD /* PostDatabaseObserverMock.swift in Sources */,
+				CEB3917C2B0380420017DACD /* AddPostViewModelTests.swift in Sources */,
+				CEB391602B035C540017DACD /* PostLocalRepositoryTests.swift in Sources */,
+				CEB391542B02A4060017DACD /* CoreDataPostManagerTests.swift in Sources */,
+				CEB391782B0377CB0017DACD /* PostRepositoryManagerMock.swift in Sources */,
+				CEB391762B0377230017DACD /* PostListViewModelTests.swift in Sources */,
+				CEB3916B2B0365F60017DACD /* PostRepositoryMock.swift in Sources */,
+				CEB391622B0362E30017DACD /* ApiManagerMock.swift in Sources */,
+				CEB391702B036DE10017DACD /* PostRemoteRepositoryMock.swift in Sources */,
+				CEB391642B03630B0017DACD /* ApiRequestMock.swift in Sources */,
+				CEB391562B02A4290017DACD /* CoreDataConfigurationMock.swift in Sources */,
+				CEB391692B03657D0017DACD /* PostRemoteRepositoryTests.swift in Sources */,
+				CEB391722B036EA00017DACD /* PostLocalRepositoryMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -805,6 +946,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8KSJL834PD;
@@ -814,6 +956,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tsyvilko.PostsAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PostsApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/PostsApp";
@@ -825,6 +968,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8KSJL834PD;
