@@ -6,10 +6,9 @@ Hello! I'm Kostya, an iOS Engineer, and I'm excited to present my latest iOS app
 
 ## Demo
 
-<div class="row">
-  <img src="Demo/demo_full_1.gif" width=400>
-  <img src="Demo/demo_full_2.gif" width=400>
-</div>
+https://github.com/kostyatsyvilko/TechTask/assets/142424975/6cb09ce6-bfba-4196-a483-e826f4fd3df3    
+
+https://github.com/kostyatsyvilko/TechTask/assets/142424975/cc87b3f7-b763-4b8f-89f3-db6c95a4ce53   
 
 ## Features
 
