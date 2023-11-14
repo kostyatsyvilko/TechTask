@@ -10,7 +10,6 @@ protocol PostListViewModelProtocol {
     
     func loadPosts() async
     func delete(post: Post)
-    func save(post: Post)
     
     func goToAddPost()
 }
@@ -57,14 +56,6 @@ final class PostListViewModel: PostListViewModelProtocol {
         await loadRemotePosts()
         await MainActor.run {
             onRemotePostsLoadingFinished?()
-        }
-    }
-    
-    func save(post: Post) {
-        do {
-            try postsRepositoryManager.saveLocal(post: post)
-        } catch let error {
-            onReceiveError?(error)
         }
     }
     
