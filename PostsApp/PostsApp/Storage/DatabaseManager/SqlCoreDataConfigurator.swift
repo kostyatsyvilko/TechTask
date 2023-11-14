@@ -6,7 +6,7 @@ final class SqlCoreDataConfigurator: CoreDataConfigurable {
     
     private(set) lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: dataModelName)
-        container.loadPersistentStores { storeDescription, error in
+        container.loadPersistentStores { _, error in
             if let error {
                 fatalError("Can not load persistent stores")
             }

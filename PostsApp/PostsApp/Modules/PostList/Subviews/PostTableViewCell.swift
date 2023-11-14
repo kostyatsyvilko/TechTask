@@ -38,7 +38,6 @@ final class PostTableViewCell: UITableViewCell {
         return stack
     }()
     
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         makeConstraints()

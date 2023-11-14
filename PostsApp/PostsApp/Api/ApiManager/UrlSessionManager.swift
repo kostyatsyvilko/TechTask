@@ -8,7 +8,7 @@ final class UrlSessionManager: ApiManager {
         self.session = session
     }
     
-    func send(url: URL, headers: [String : String]) async -> ApiManagerResult {
+    func send(url: URL, headers: [String: String]) async -> ApiManagerResult {
         var request = URLRequest(url: url)
         request.allHTTPHeaderFields = headers
         do {

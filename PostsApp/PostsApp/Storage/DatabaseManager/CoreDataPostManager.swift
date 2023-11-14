@@ -38,7 +38,7 @@ final class CoreDataPostManager: CoreDataPostManagerProtocol {
     }
     
     func save(posts: [Post]) throws {
-        let _ = posts.map { createManagedObject(from: $0) }
+        _ = posts.map { createManagedObject(from: $0) }
         
         do {
             try childContext.save()

@@ -9,7 +9,7 @@ class PostRepository: ApiClient {
         self.apiManager = apiManager
     }
     
-    func send<T>(_ request: T) async -> ApiClientResult<T.Response> where T : ApiRequest {
+    func send<T>(_ request: T) async -> ApiClientResult<T.Response> where T: ApiRequest {
         guard let url = URL(string: baseUrlString + request.resourceName) else {
             return .failure(ApiError.incorrectUrl)
         }

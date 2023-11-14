@@ -33,7 +33,8 @@ final class PostTableView: UIView {
     }()
     
     private lazy var tableViewDataSource: UITableViewDiffableDataSource<PostsTableViewSection, Post> = {
-        let dataSource = UITableViewDiffableDataSource<PostsTableViewSection, Post>(tableView: postsTableView) { tableView, _, model in
+        let dataSource = UITableViewDiffableDataSource<PostsTableViewSection,
+                                                        Post>(tableView: postsTableView) { tableView, _, model in
             guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.postCellReuseIdentifier) as? PostTableViewCell else {
                 return nil
             }
@@ -106,7 +107,8 @@ extension PostTableView: UITableViewDelegate {
             return nil
         }
         
-        let deleteAction = UIContextualAction(style: .destructive, title: "") { [weak self] action, view, completion in
+        let deleteAction = UIContextualAction(style: .destructive,
+                                              title: "") { [weak self] _, _, completion in
             self?.delegate?.onPostDelete(post: post)
             completion(true)
         }
@@ -120,5 +122,3 @@ extension PostTableView: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }
-
-

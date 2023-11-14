@@ -10,7 +10,10 @@ final class PostLocalRepository: PostLocalRepositoryProtocol {
     func loadPosts() -> PostsResultType {
         do {
             let result = try coreDataManager.fetch(predicate: nil)
-            let posts = result.map { Post(from: $0) }.sorted { $0.title.caseInsensitiveCompare($1.title) == .orderedAscending }
+            let posts = result.map { Post(from: $0) }.sorted {
+                $0.title.caseInsensitiveCompare($1.title) == .orderedAscending
+            }
+            
             return .success(posts)
         } catch let error {
             return .failure(error)
