@@ -20,21 +20,16 @@ final class PostListViewModelTests: XCTestCase {
         
     }
 
-    func testOnReceiveEmptyPosts() throws {
+    func testOnReceiveEmptyPosts() async throws {
         let exp = expectation(description: "Receive posts")
         
-        // When
-        Task {
-            await viewModel.loadPosts()
-        }
-        
         viewModel.onReceivePosts = { posts in
-            // Then
             XCTAssertTrue(posts.isEmpty)
             exp.fulfill()
         }
-        
-        waitForExpectations(timeout: 1)
+        await viewModel.loadPosts()
+
+        await fulfillment(of: [exp], timeout: 1)
     }
     
     func testListenOnDatabaseObserverChangeAfterSavingRemotePosts() async throws {
