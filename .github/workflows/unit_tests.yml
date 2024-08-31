@@ -17,4 +17,4 @@ jobs:
         run: sudo xcode-select -switch /Applications/Xcode_15.2.app
           
       - name: Test
-        run: bundle exec fastlane test
+        run: fastlane test
