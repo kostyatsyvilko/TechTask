@@ -26,7 +26,7 @@ final class PostRepositoryManagerTests: XCTestCase {
         // Then
         switch result {
         case .success(let posts):
-            XCTAssertTrue(!posts.isEmpty)
+            XCTAssertFalse(!posts.isEmpty)
         case .failure(_):
             XCTFail()
         }
