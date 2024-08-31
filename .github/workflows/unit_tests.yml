@@ -1,16 +1,11 @@
-name: GitHub Action 
+name: Unit Test
 
-on: 
-  push:
-    branches:    
-      - dev
+on:
   pull_request:
-    branches:    
-      - main
 
 jobs:
   deploy:
-    name: GitHub Pipeline
+    name: Tests
     runs-on: macos-latest
     
     steps:
