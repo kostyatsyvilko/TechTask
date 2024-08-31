@@ -20,8 +20,8 @@ jobs:
    
       - name: Cleanup
         run: |
-          xcodebuild clean -project PostsApp.xcodeproj -scheme PostApp | xcpretty
+          xcodebuild clean -project PostsApp.xcodeproj -scheme PostsApp | xcpretty
           
       - name: Test
         run: |
-          xcodebuild test -project PostsApp.xcodeproj -scheme PostsApp -destination 'platform=iOS   Simulator,name=iPhone 15' | xcpretty -s
+          xcodebuild test -project PostsApp.xcodeproj -scheme PostsApp -destination 'platform=iOS Simulator,name=iPhone 15 Pro' | xcpretty -s || exit 1
